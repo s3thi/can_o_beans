@@ -5,7 +5,7 @@ from journal.models import JournalEntry
 class ArchiveView(ListView):
 
     context_object_name = 'journal_entry_list'
-    template_name = 'archive.html'
+    template_name = 'journal/archive.html'
 
     def get_queryset(self):
         qs = JournalEntry.objects.all()
