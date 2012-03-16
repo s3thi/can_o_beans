@@ -1,38 +1,29 @@
-from django.http import HttpResponse
-from django.views.generic import ListView, DetailView
+from django.views.generic import DetailView, dates
 from journal.models import JournalEntry
 
-months = [ '', 'january', 'february', 'march', 'april', 'may', 'june', 'july',
-           'august', 'september', 'october', 'november', 'december' ]
 
-class ArchiveView(ListView):
+class ArchiveViewMixin(object):
 
+    model = JournalEntry
     context_object_name = 'journal_entry_list'
     template_name = 'journal/archive.html'
+    date_field = 'published_on'
 
-    def get_queryset(self):
-        qs = JournalEntry.objects.all()
 
-        has_year = 'year' in self.kwargs
-        has_month = 'month' in self.kwargs
-        has_day = 'day' in self.kwargs
+class ArchiveIndexView(ArchiveViewMixin, dates.ArchiveIndexView):
+    pass
 
-        if has_year:
-            qs = qs.filter(
-                published_on__year=self.kwargs['year']
-            )
 
-        if has_year and has_month:
-            qs = qs.filter(
-                published_on__month=to_numeric_month(self.kwargs['month'])
-            )
+class YearArchiveView(ArchiveViewMixin, dates.YearArchiveView):
+    make_object_list = True
 
-        if has_year and has_month and has_day:
-            qs = qs.filter(
-                published_on__day=self.kwargs['day']
-            )
 
-        return qs
+class MonthArchiveView(ArchiveViewMixin, dates.MonthArchiveView):
+    pass
+
+
+class DayArchiveView(ArchiveViewMixin, dates.DayArchiveView):
+    pass
 
 
 class EntryView(DetailView):
@@ -40,10 +31,3 @@ class EntryView(DetailView):
     model = JournalEntry
     context_object_name = 'journal_entry'
     template_name = 'journal/entry.html'
-
-
-def to_numeric_month(month):
-    try:
-        return int(month)
-    except ValueError:
-        return months.index(month)
