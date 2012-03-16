@@ -24,10 +24,12 @@ will be appended to the end of the slug. If the new slug is still not unique, th
 
 class JournalEntry(models.Model):
 
+    SLUG_MAXLEN = 256
+
     title = models.TextField(blank=True, null=True)
-    slug = models.SlugField(max_length=256, blank=True, unique=True)
+    slug = models.SlugField(max_length=SLUG_MAXLEN, blank=True)
     published_on = models.DateTimeField()
-    content = models.TextField()
+    content = models.TextField(blank=True, null=True)
     author = models.ForeignKey(User)
 
     def __unicode__(self):
@@ -38,10 +40,37 @@ class JournalEntry(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            # TODO: check for non-unique slugs and fix them.
-            if self.title:
-                self.slug = slugify(self.title)
-            else:
-                self.slug = slugify(self.content[:256])
+            self.slug = self.make_unique_slug()
         
         return super(JournalEntry, self).save(*args, **kwargs)
+
+    def make_unique_slug(self):
+        # First, generate a slug.
+        # TODO: raise error if body, title and slug are all null.
+        if self.title:
+            slug = slugify(self.title)
+        else:
+            slug = slugify(self.content[:SLUG_MAXLEN])
+
+        # Now ensure that the generated slug is unique.
+        entries = JournalEntry.objects.filter(published_on=self.published_on)
+        slugs = [ entry.slug for entry in entries ]
+        slug_postfix = 0
+
+        while slug in slugs:
+            slug_postfix += 1
+            slug_postfix_str  = '-' + str(slug_postfix)
+
+            # If current slug is too long, truncate it to make room for the
+            # postfix.
+            if len(slug) == SLUG_MAXLEN:
+                newlen = SLUG_MAXLEN - len(slug_postfix_str)
+                slug = slug[:newlen]
+
+            # If the slug ends with a '-', remove it.
+            if slug[-1] == '-':
+                slug = slug[0:-1]
+
+            slug += slug_postfix_str
+            return slug
+
