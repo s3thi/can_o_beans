@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.views.generic import ListView
 from journal.models import JournalEntry
 
-class JournalEntryListView(ListView):
+class ArchiveView(ListView):
 
     context_object_name = 'journal_entry_list'
     template_name = 'archive.html'
