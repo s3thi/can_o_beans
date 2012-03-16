@@ -1,10 +1,35 @@
 from django.http import HttpResponse
+from django.views.generic import ListView
+from journal.models import JournalEntry
 
-def show_index(request):
-	return show_archive(request)
+class JournalEntryListView(ListView):
 
-def show_archive(request, year=None, month=None, day=None):
-	return HttpResponse('showing archive')
+    context_object_name = 'journal_entry_list'
+    template_name = 'archive.html'
+
+    def get_queryset(self):
+        qs = JournalEntry.objects.all()
+
+        has_year = 'year' in self.kwargs
+        has_month = 'month' in self.kwargs
+        has_day = 'day' in self.kwargs
+
+        if has_year:
+            qs = qs.filter(
+                published_on__year=self.kwargs['year']
+            )
+
+        if has_year and has_month:
+            qs = qs.filter(
+                published_on__month=to_numeric_month(self.kwargs['month'])
+            )
+
+        if has_year and has_month and has_day:
+            qs = qs.filter(
+                published_on__day=self.kwargs['day']
+            )
+
+        return qs
 
 def show_entry(request, year, month, day, title):
 	return HttpResponse('showing a post')
