@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
 
+
 '''
 Okay, so this is how things work around here: when you go to /y/, you find the
 archive for one whole year, and likewise for /y/m/ and /y/m/d/. To go to
@@ -22,6 +23,7 @@ the end of the slug to make room for a unique numeric identifier. First, a  "-1"
 will be appended to the end of the slug. If the new slug is still not unique, the
 "-1" will be incremented to "-2", and so on until a unique slug has been found.
 '''
+
 
 class JournalEntry(models.Model):
 
