@@ -1,6 +1,9 @@
 from django.http import HttpResponse
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from journal.models import JournalEntry
+
+months = [ '', 'january', 'february', 'march', 'april', 'may', 'june', 'july',
+           'august', 'september', 'october', 'november', 'december' ]
 
 class ArchiveView(ListView):
 
@@ -31,5 +34,16 @@ class ArchiveView(ListView):
 
         return qs
 
-def show_entry(request, year, month, day, title):
-	return HttpResponse('showing a post')
+
+class EntryView(DetailView):
+
+    model = JournalEntry
+    context_object_name = 'journal_entry'
+    template_name = 'journal/entry.html'
+
+
+def to_numeric_month(month):
+    try:
+        return int(month)
+    except ValueError:
+        return months.index(month)
