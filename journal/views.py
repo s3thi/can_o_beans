@@ -15,6 +15,7 @@ class ArchiveIndexView(ArchiveViewMixin, dates.ArchiveIndexView):
 
 
 class YearArchiveView(ArchiveViewMixin, dates.YearArchiveView):
+
     make_object_list = True
 
 
