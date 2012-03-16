@@ -12,5 +12,6 @@ urlpatterns = patterns('',
     url('^{0}/$'.format(y), YearArchiveView.as_view()),
     url('^{0}/{1}/$'.format(y, m), MonthArchiveView.as_view()),
     url('^{0}/{1}/{2}/$'.format(y, m, d), DayArchiveView.as_view()),
-    url('^{0}/{1}/{2}/{3}/$'.format(y, m, d, s), EntryView.as_view()),
+    url('^{0}/{1}/{2}/{3}/$'.format(y, m, d, s), EntryView.as_view(),
+        name='entry-detail-view'),
 )

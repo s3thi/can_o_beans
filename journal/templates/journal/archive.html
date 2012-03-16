@@ -3,7 +3,7 @@
 {% for journal_entry in journal_entry_list %}
   <section>
     <h1>[ {{ journal_entry.published_on }} ]</h1>
-    <h2>{{ journal_entry.title }}</h2>
+    <h2><a href="{{ journal_entry.url }}">{{ journal_entry.title }}</a></h2>
     <p>{{ journal_entry.content }}</p>
   </section>
   {% endfor %}

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+from django.core.urlresolvers import reverse
 
 '''
 Okay, so this is how things work around here: when you go to /y/, you find the
@@ -74,3 +75,10 @@ class JournalEntry(models.Model):
             slug += slug_postfix_str
             return slug
 
+    def url(self):
+        return reverse('entry-detail-view', kwargs={
+            'year' : self.published_on.year,
+            'month': self.published_on.month,
+            'day'  : self.published_on.day,
+            'slug' : self.slug
+        })
