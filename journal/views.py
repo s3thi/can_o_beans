@@ -11,6 +11,7 @@ class ArchiveViewMixin(object):
 
 
 class ArchiveIndexView(ArchiveViewMixin, dates.ArchiveIndexView):
+
     pass
 
 
@@ -20,10 +21,12 @@ class YearArchiveView(ArchiveViewMixin, dates.YearArchiveView):
 
 
 class MonthArchiveView(ArchiveViewMixin, dates.MonthArchiveView):
+
     pass
 
 
 class DayArchiveView(ArchiveViewMixin, dates.DayArchiveView):
+
     pass
 
 
