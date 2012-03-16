@@ -23,6 +23,7 @@ will be appended to the end of the slug. If the new slug is still not unique, th
 '''
 
 class JournalEntry(models.Model):
+
     title = models.TextField(blank=True, null=True)
     slug = models.SlugField(max_length=256, blank=True, unique=True)
     published_on = models.DateTimeField()
