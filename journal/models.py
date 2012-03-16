@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 '''
 Okay, so this is how things work around here: when you go to /y/, you find the
@@ -23,13 +24,23 @@ will be appended to the end of the slug. If the new slug is still not unique, th
 
 class JournalEntry(models.Model):
     title = models.TextField(blank=True, null=True)
-    slug = models.CharField(max_length=256, blank=True)
+    slug = models.SlugField(max_length=256, blank=True, unique=True)
     published_on = models.DateTimeField()
     content = models.TextField()
     author = models.ForeignKey(User)
 
     def __unicode__(self):
         if self.title:
-            return '<{0}>'.format(self.title)
+            return self.title
         else:
-            return '<{0}>'.format(self.slug)
+            return self.slug
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            # TODO: check for non-unique slugs and fix them.
+            if self.title:
+                self.slug = slugify(self.title)
+            else:
+                self.slug = slugify(self.content[:256])
+        
+        return super(JournalEntry, self).save(*args, **kwargs)
