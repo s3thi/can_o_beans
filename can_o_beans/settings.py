@@ -121,6 +121,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # 'django.contrib.admindocs',
 
+    'devserver',
+    
     'books',
     'journal',
     'pages',
