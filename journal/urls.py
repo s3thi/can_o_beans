@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from journal.views import (ArchiveIndexView,  YearArchiveView,
-                           MonthArchiveView, DayArchiveView, EntryView)
+                           MonthArchiveView, DayArchiveView, EntryView,
+                           SlugEntryView)
 
 y = '(?P<year>\d{4})'
 m = '(?P<month>\w+)'
@@ -15,6 +16,6 @@ urlpatterns = patterns('',
     url('^{0}/{1}/{2}/$'.format(y, m, d), DayArchiveView.as_view()),
     url('^{0}/{1}/{2}/{3}/$'.format(y, m, d, k), EntryView.as_view(),
         name='entry-detail-view-pk'),
-    url('^{0}/{1}/{2}/{3}/$'.format(y, m, d, s), EntryView.as_view(),
+    url('^{0}/{1}/{2}/{3}/$'.format(y, m, d, s), SlugEntryView.as_view(),
         name='entry-detail-view')
 )
