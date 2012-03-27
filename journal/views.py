@@ -1,6 +1,11 @@
 import datetime
+from calendar import month_abbr
 from django.views.generic import DetailView, dates
+from django.utils.timezone import get_default_timezone
 from journal.models import JournalEntry
+
+
+months = { v: k for k, v in enumerate(month_abbr) }
 
 
 class ArchiveViewMixin(object):
@@ -37,20 +42,27 @@ class EntryView(DetailView):
     context_object_name = 'journal_entry'
     template_name = 'journal/entry.html'
 
+
+class SlugEntryView(EntryView):
+
     def get_queryset(self):
-        k = self.kwargs
+        published_on_lower = datetime.datetime(
+            year=int(self.kwargs['year']),
+            month=months[self.kwargs['month']],
+            day=int(self.kwargs['day']),
+            hour=0,
+            minute=0,
+            second=0,
+            tzinfo=get_default_timezone())
 
-        try:
-            date_str = '{0} {1} {2}'.format(k['year'], k['month'], k['day'])
-            published_on = datetime.datetime.strptime(date_str, '%Y %b %d')
-
-            results = JournalEntry.objects.filter(
-                published_on=published_on,
-                slug=k['slug']
-            )
-        except KeyError:
-            results = JournalEntry.objects.filter(
-                pk=k['pk']
-            )
-
-        return results
+        published_on_upper = published_on_lower.replace(
+            hour=23,
+            minute=59,
+            second=59
+        )
+            
+        return JournalEntry.objects.filter(
+            published_on__gte=published_on_lower,
+            published_on__lte=published_on_upper,
+            slug=self.kwargs['slug']
+        )
