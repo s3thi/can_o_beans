@@ -27,7 +27,8 @@ class JournalEntry(models.Model):
 
     title = models.TextField(blank=True, null=True)
     slug = models.SlugField(max_length=SLUG_MAXLEN, blank=True, null=True)
-    published_on = models.DateTimeField()
+    published_on = models.DateField()
+    timestamp = models.TimeField()
     content = models.TextField(blank=True, null=True)
     author = models.ForeignKey(User)
 
@@ -40,6 +41,14 @@ class JournalEntry(models.Model):
     def save(self, *args, **kwargs):
         if self.title and not self.slug:
             self.slug = self.unique_slug_from_title()
+
+        try:
+            int(slug)
+        except ValueError:
+            pass
+        else:
+            # TODO: test this condition.
+            raise ValueError('slug cannot be an integer')
         
         return super(JournalEntry, self).save(*args, **kwargs)
 
