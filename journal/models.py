@@ -27,8 +27,7 @@ class JournalEntry(models.Model):
 
     title = models.TextField(blank=True, null=True)
     slug = models.SlugField(max_length=SLUG_MAXLEN, blank=True, null=True)
-    published_on = models.DateField()
-    timestamp = models.TimeField()
+    published_on = models.DateTimeField()
     content = models.TextField(blank=True, null=True)
     author = models.ForeignKey(User)
 
