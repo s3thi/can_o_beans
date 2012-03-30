@@ -123,7 +123,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 
     'devserver',
-    
+
+    'gravy',
     'books',
     'journal',
     'pages',
