@@ -1,3 +1,12 @@
+{% extends "gravy/base.html" %}
+{% block title %}
+    {% if journal_entry.title %}
+        {{ journal_entry.title }}
+    {% else %}
+        {{ journal_entry.published_on }}
+    {% endif %}
+{% endblock %}
+
 {% block content %}
   <section>
     <h1>{{ journal_entry.published_on }}</h1>

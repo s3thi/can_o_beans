@@ -1,5 +1,7 @@
-{% block content %}
+{% extends "gravy/base.html" %}
+{% block title %}Journal Archive{% endblock %}
 
+{% block content %}
 {% for journal_entry in journal_entry_list %}
   <section>
     <h1>[ {{ journal_entry.published_on }} ]</h1>
@@ -10,5 +12,4 @@
     <p>{{ journal_entry.content|safe }}</p>
   </section>
   {% endfor %}
-
 {% endblock %}
