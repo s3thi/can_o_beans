@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <title>{% block title %}{% endblock %} &mdash; {% block title_postfix %}AnkurSethi.in{% endblock %}</title>
+  </head>
+
+  <body>
+    <header>
+      {% block header %}
+          <h1>AnkurSethi.in</h1>
+      {% endblock %}
+    </header>
+
+    <section>
+      {% block content %}{% endblock %}
+    </section>
+
+    <footer>
+      {% block footer %}
+          <p>Powered by <a href="http://github.com/GeneralMaximus/can_o_beans/">Can O' Beans</a>.</p>
+      {% endblock %}
+    </footer>
+  </body>
+</html>
