@@ -3,7 +3,7 @@
     {% if journal_entry.title %}
         {{ journal_entry.title }}
     {% else %}
-        {{ journal_entry.published_on }}
+        {{ journal_entry.published_on|date:"F d, Y, H:i" }}
     {% endif %}
 {% endblock %}
 
