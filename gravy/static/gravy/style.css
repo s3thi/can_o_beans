@@ -1,10 +1,89 @@
+/* Main styles. */
+
+body {
+    font-size: 16px;
+    margin-left: 10em;
+    margin-right: 10em;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited {
+    color: purple;
+}
+
+#content {
+    float: left;
+}
+
+#sidebar {
+    float: right;
+}
+
+#header_wrap {
+    margin-bottom: 0.5em;
+}
+
+#header {
+    font-size: 3em;
+}
+
+#page_wrap {
+    padding: 1.5em;
+    border-top: solid 0.2em black;
+}
+
+#content {
+    width: 65%;
+    margin-right: 3em;
+}
+
+#sidebar {
+    width: 25%;
+}
+
+#footer {
+    clear: both;
+}
+
+#top_navbar {
+    margin-top: -1.4em;
+}
+
 #top_navbar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: inline;
 }
 
 #top_navbar ul li {
     display: inline;
-    margin-right: 10px;
+    margin-right: 1em;
+}
+
+#top_navbar a {
+    font-size: 1.2em;
+    color: blue;
+}
+
+#top_navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Styles for journal archive. */
+
+.journal_entry {
+    margin-bottom: 5em;
+}
+
+.journal_entry_head {
+    margin-bottom: 2em;
 }

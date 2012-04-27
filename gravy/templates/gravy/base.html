@@ -7,29 +7,38 @@
   </head>
 
   <body>
-    <header>
+    <header id="header_wrap">
       {% block header %}
-          <h1>AnkurSethi.in</h1>
+        <h1 id="header">AnkurSethi.in</h1>
       {% endblock %}
-    </header>
 
-    <nav id="top_navbar">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/journal">Journal</a></li>
-        <li><a href="/books">Books</a></li>
-        <li><a href="/wiki">Wiki</a></li>
-      </ul>
-    </nav>
+      <nav id="top_navbar">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/code">Code</a></li>
+          <li><a href="/journal">Journal</a></li>
+          <li><a href="/docs/">Docs</a></li>
+          <li><a href="/books">Books</a></li>
+        </ul>
+      </nav>
+    </header> <!-- end header_wrap -->
 
-    <section>
-      {% block content %}{% endblock %}
-    </section>
+    <div id="page_wrap">
+      <section class="col" id="content">
+        {% block content %}{% endblock %}
+      </section>
 
-    <footer>
-      {% block footer %}
-          <p>Website powered by <a href="http://djangoproject.com">Django</a> and a <a href="http://github.com/GeneralMaximus/can_o_beans/">Can O' Beans</a>.</p>
-      {% endblock %}
-    </footer>
+      <section class="col" id="sidebar">
+        {% block sidebar %}
+        {% endblock %}
+      </section>
+
+      <footer id="footer">
+        {% block footer %}
+        <p>Website powered by <a href="http://djangoproject.com">Django</a> and a <a href="http://github.com/GeneralMaximus/can_o_beans/">Can O' Beans</a>.</p>
+        {% endblock %}
+      </footer>
+    </div> <!-- end page_wrap -->
   </body>
 </html>

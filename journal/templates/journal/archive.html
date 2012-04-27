@@ -2,14 +2,26 @@
 {% block title %}Journal Archive{% endblock %}
 
 {% block content %}
-{% for journal_entry in journal_entry_list %}
-  <section>
-    <h1>[ {{ journal_entry.published_on }} ]</h1>
-    {% if journal_entry.title %}
-      <h2>{{ journal_entry.title }}</h2>
-    {% endif %}
-    <p><a href="{{ journal_entry.url }}">permalink</a></p>
-    <p>{{ journal_entry.content|safe }}</p>
-  </section>
+  {% for journal_entry in journal_entry_list %}
+    <section class="journal_entry">
+      <div class="journal_entry_head">
+        {% if journal_entry.title %}
+          <h2>{{ journal_entry.title }}</h2>
+        {% endif %}
+        <p class="journal_entry_meta">{{ journal_entry.published_on }} &bull; <a href="{{ journal_entry.url }}">permalink</a></p>
+      </div>
+
+      <p>{{ journal_entry.content|safe }}</p>
+    </section>
   {% endfor %}
+{% endblock %}
+
+{% block sidebar %}
+    <nav>
+      <h3>Archives</h3>
+      <ul>
+        <li>Month 1</li>
+        <li>Month 2</li>
+      </ul>
+    </nav>
 {% endblock %}

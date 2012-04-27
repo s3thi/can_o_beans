@@ -8,11 +8,14 @@
 {% endblock %}
 
 {% block content %}
-  <section>
-    <h1>{{ journal_entry.published_on }}</h1>
-    {% if journal_entry.title %}
-      <h2>{{ journal_entry.title }}</h2>
-    {% endif %}
+  <section class="journal_entry">
+    <div class="journal_entry_head">
+      {% if journal_entry.title %}
+        <h2>{{ journal_entry.title }}</h2>
+      {% endif %}
+      <p class="journal_entry_meta">{{ journal_entry.published_on }} &bull; <a href="{{ journal_entry.url }}">permalink</a></p>
+    </div>
+
     <p>{{ journal_entry.content|safe }}</p>
   </section>
 {% endblock %}
