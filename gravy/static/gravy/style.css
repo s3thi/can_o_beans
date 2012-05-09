@@ -1,89 +1,104 @@
 /* Main styles. */
+/* First, reset all styles so that the browser doesn't mess up the rhythm of
+   the page with its own crappy default styles. */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, p, blockquote,
+th, td {
+  margin: 0;
+  padding: 0; }
 
 body {
-    font-size: 16px;
-    margin-left: 10em;
-    margin-right: 10em;
-}
+  font-size: 15px;
+  font-family: verdana, arial, sans-serif;
+  margin-left: 10em;
+  margin-right: 10em; }
 
 a {
-    text-decoration: none;
-    color: blue;
-}
+  text-decoration: none; }
 
 a:hover {
-    text-decoration: underline;
-}
+  text-decoration: underline; }
 
-a:visited {
-    color: purple;
-}
+p {
+  font-size: 1em;
+  line-height: 1.5em;
+  /* Default margins are 1em. Change to match line height. */
+  margin-top: 1.5em;
+  margin-bottom: 1.5em; }
 
-#content {
-    float: left;
-}
+h2 {
+  font-size: 1.3em;
+  /* Make sure line height is same as paragraphs. */
+  line-height: 1.1em;
+  margin-bottom: 1.1em; }
 
-#sidebar {
-    float: right;
-}
-
-#header_wrap {
-    margin-bottom: 0.5em;
-}
+ul {
+  margin-left: 2em; }
 
 #header {
-    font-size: 3em;
-}
+  font-size: 3em;
+  margin-top: 0.5em;
+  margin-bottom: 0.1em; }
 
-#page_wrap {
-    padding: 1.5em;
-    border-top: solid 0.2em black;
-}
+#header_wrap {
+  float: left;
+  width: 65%; }
+
+#contact {
+  float: right;
+  width: 25%; }
 
 #content {
-    width: 65%;
-    margin-right: 3em;
-}
+  float: left; }
 
 #sidebar {
-    width: 25%;
-}
+  float: right; }
+
+#page_wrap {
+  padding-top: 2.933333em;
+  padding-left: 1.5em;
+  border-top: solid 0.2em black;
+  clear: both; }
+
+#content {
+  width: 65%; }
+
+#sidebar {
+  width: 25%; }
 
 #footer {
-    clear: both;
-}
+  clear: both; }
 
 #top_navbar {
-    margin-top: -1.4em;
-}
+  margin-bottom: 1.5em; }
 
 #top_navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: inline;
-}
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline; }
 
 #top_navbar ul li {
-    display: inline;
-    margin-right: 1em;
-}
+  display: inline;
+  margin-right: 1em; }
 
 #top_navbar a {
-    font-size: 1.2em;
-    color: blue;
-}
+  font-size: 1.2em;
+  color: blue; }
 
 #top_navbar a:hover {
-    text-decoration: underline;
-}
+  text-decoration: underline; }
 
 /* Styles for journal archive. */
-
 .journal_entry {
-    margin-bottom: 5em;
-}
+  padding-bottom: 1.433333em;
+  margin-bottom: 2.933333em;
+  border-bottom: dotted 1px silver; }
 
-.journal_entry_head {
-    margin-bottom: 2em;
-}
+.journal_entry_meta {
+  color: #464646; }
+
+.journal_entry_meta a {
+  color: #464646; }
+
+.journal_entry_meta a:hover {
+  color: blue; }

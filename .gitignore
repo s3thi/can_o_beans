@@ -2,3 +2,4 @@
 *.pyo
 *.db
 .sass-cache/
+gravy/static/gravy/style.css
