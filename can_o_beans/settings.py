@@ -128,7 +128,6 @@ INSTALLED_APPS = (
     'books',
     'journal',
     'pages',
-    'wiki',
 )
 
 # A sample logging configuration. The only tangible logging
