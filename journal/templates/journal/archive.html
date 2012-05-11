@@ -8,17 +8,17 @@
         {% if journal_entry.title %}
           <h2>{{ journal_entry.title }}</h2>
         {% endif %}
-        <p class="journal_entry_meta">{{ journal_entry.published_on }} &bull; <a href="{{ journal_entry.url }}">permalink</a></p>
+        <p class="journal_entry_meta"><a class="permalink" href="{{ journal_entry.url }}"> &infin; </a><span class="posted_on">Posted on {{ journal_entry.published_on }}</span></p>
       </div>
 
-      <p>{{ journal_entry.content|safe }}</p>
+      <p class="journal_entry_content">{{ journal_entry.content|safe }}</p>
     </section>
   {% endfor %}
 {% endblock %}
 
 {% block sidebar %}
     <nav>
-      <h3>Archives</h3>
+      <h2>Archives</h2>
       <ul>
         <li>Month 1</li>
         <li>Month 2</li>

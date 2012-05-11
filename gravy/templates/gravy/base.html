@@ -7,22 +7,38 @@
   </head>
 
   <body>
-    <header id="header_wrap">
-      {% block header %}
-        <h1 id="header">AnkurSethi.in</h1>
-      {% endblock %}
+    <header>
+      <div id="header_wrap">
+        {% block header %}
+          <h1 id="header">
+            <span id="header_ankur">Ankur</span>
+            <span id="header_sethi">Sethi</span></h1>
+          </h1>
+        {% endblock %}
 
-      <nav id="top_navbar">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/code">Code</a></li>
-          <li><a href="/journal">Journal</a></li>
-          <li><a href="/docs/">Docs</a></li>
-          <li><a href="/books">Books</a></li>
-        </ul>
-      </nav>
-    </header> <!-- end header_wrap -->
+        <nav id="top_navbar">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/code">Code</a></li>
+            <li><a href="/journal">Journal</a></li>
+            <li><a href="/docs/">Docs</a></li>
+            <li><a href="/books">Books</a></li>
+          </ul>
+        </nav>
+      </div>  <!-- end header_wrap -->
+
+      <!--
+      <div id="contact">
+        <p>
+          <a href="mailto:contact@ankursethi.in">contact@ankursethi.in</a><br>
+          <a href="http://twitter.com/GnrlMxms">@GnrlMxms on twitter</a>
+          <a href="http://github.com/GeneralMaximus">GeneralMaximus on Github</a><br>
+        </p>
+      </div>
+      -->
+    </header>
 
     <div id="page_wrap">
       <section class="col" id="content">

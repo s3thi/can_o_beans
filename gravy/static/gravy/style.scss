@@ -1,3 +1,5 @@
+@import "color_theme_vintage_modern";
+
 /* Main styles. */
 
 /* First, reset all styles so that the browser doesn't mess up the rhythm of
@@ -13,10 +15,12 @@ body {
     font-family: verdana, arial, sans-serif;
     margin-left: 10em;
     margin-right: 10em;
+    background-color: $body_background_color;
 }
 
 a {
     text-decoration: none;
+    color: $eames;
 }
 
 a:hover {
@@ -38,21 +42,67 @@ h2 {
     /* Make sure line height is same as paragraphs. */
     line-height: 1.1em;
     margin-bottom: 1.1em;
+    color: $h2_color;
 }
 
 ul {
     margin-left: 2em;
 }
 
-#header {
-    font-size: 3em;
-    margin-top: 0.5em;
-    margin-bottom: 0.1em;
+#header_wrap {
+    margin-top: 1em;
 }
 
-#header_wrap {
+#header {
+    font-size: 1.2em;
     float: left;
-    width: 65%;
+    display: inline;
+    margin-right: 2em;
+
+    #header_ankur {
+        color: $header_ankur_color;
+    }
+
+    #header_sethi {
+        color: $header_sethi_color;
+    }
+
+    #header_in {
+        color: $header_in_color;
+    }
+}
+
+
+#top_navbar {
+    margin-bottom: 1.5em;
+    float: left;
+    display: inline;
+    vertical-align: middle;
+}
+
+#top_navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+
+#top_navbar ul li {
+    display: inline;
+    margin-right: 1em;
+}
+
+#top_navbar a {
+    padding: 0.3em;
+    font-size: 1.2em;
+    color: $top_navbar_link_color;
+}
+
+#top_navbar a:hover {
+    text-decoration: none;
+    background-color: $top_navbar_link_color;
+    color: white;
+    border-radius: 0.5em;
 }
 
 #contact {
@@ -71,7 +121,7 @@ ul {
 #page_wrap {
     padding-top: 2.933333em;
     padding-left: 1.5em;
-    border-top: solid 0.2em black;
+    border-top: solid 0.2em $page_wrap_border_color;
     clear: both;
 }
 
@@ -87,31 +137,6 @@ ul {
     clear: both;
 }
 
-#top_navbar {
-    margin-bottom: 1.5em;
-}
-
-#top_navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: inline;
-}
-
-#top_navbar ul li {
-    display: inline;
-    margin-right: 1em;
-}
-
-#top_navbar a {
-    font-size: 1.2em;
-    color: blue;
-}
-
-#top_navbar a:hover {
-    text-decoration: underline;
-}
-
 /* Styles for journal archive. */
 
 .journal_entry {
@@ -121,13 +146,32 @@ ul {
 }
 
 .journal_entry_meta {
-    color: #464646;
+    color: $journal_entry_meta_color;
 }
 
-.journal_entry_meta a {
-    color: #464646;
+.posted_on {
+    vertical-align: middle;
 }
 
-.journal_entry_meta a:hover {
-    color: blue;
+.permalink {
+    display: inline-block;
+    color: $permalink_color;
+    background-color: $permalink_background_color;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    font-size: 1.5em;
+    border-radius: 5em;
+    text-align: center;
+    text-decoration: none;
+    margin-right: 1em;
+    border: solid 1px $permalink_background_color;
+    vertical-align: middle;
+}
+
+.permalink:hover {
+    background-color: $permalink_hover_background_color;
+    border: solid 1px $permalink_hover_color;
+    color: $permalink_hover_color;
+    text-decoration: none;
 }
