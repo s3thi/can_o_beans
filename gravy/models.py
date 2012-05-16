@@ -97,7 +97,7 @@ class Page(models.Model):
 
         if self.slug:
             args['slug'] = self.slug
-            return reverse('entry-detail-view', kwargs=args)
+            return reverse('cob_journal_entry_detail_view', kwargs=args)
         else:
             args['pk'] = self.id
-            return reverse('entry-detail-view-pk', kwargs=args)
+            return reverse('cob_journal_entry_detail_view_pk', kwargs=args)

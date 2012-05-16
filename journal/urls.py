@@ -10,12 +10,14 @@ s = '(?P<slug>\S+)'
 k = '(?P<pk>\d+)'
 
 urlpatterns = patterns('',
-    url('^$', ArchiveIndexView.as_view()),
-    url('^{0}/$'.format(y), YearArchiveView.as_view()),
+    url('^$', ArchiveIndexView.as_view(),
+        name='cob_journal_index'),
+    url('^{0}/$'.format(y), YearArchiveView.as_view(),
+        name='cob_journal_year_archive_view'),
     url('^{0}/{1}/$'.format(y, m), MonthArchiveView.as_view()),
     url('^{0}/{1}/{2}/$'.format(y, m, d), DayArchiveView.as_view()),
     url('^{0}/{1}/{2}/{3}/$'.format(y, m, d, k), EntryView.as_view(),
-        name='entry-detail-view-pk'),
+        name='cob_journal_entry_detail_view_pk'),
     url('^{0}/{1}/{2}/{3}/$'.format(y, m, d, s), SlugEntryView.as_view(),
-        name='entry-detail-view')
+        name='cob_journal_entry_detail_view')
 )

@@ -49,6 +49,10 @@ ul {
     margin-left: 2em;
 }
 
+ul li {
+    line-height: 1.5em;
+}
+
 #header_wrap {
     margin-top: 1em;
 }
@@ -175,3 +179,4 @@ ul {
     color: $permalink_hover_color;
     text-decoration: none;
 }
+

@@ -1,5 +1,6 @@
 import datetime
 from calendar import month_abbr
+from collections import OrderedDict
 from django.views.generic import DetailView, dates
 from django.utils.timezone import get_default_timezone
 from journal.models import JournalEntry
@@ -14,6 +15,26 @@ class ArchiveViewMixin(object):
     context_object_name = 'journal_entry_list'
     template_name = 'journal/archive.html'
     date_field = 'published_on'
+
+    def get_context_data(self, **kwargs):
+        context = super(ArchiveViewMixin, self).get_context_data(**kwargs)
+        context['active_years'] = self.get_active_years()
+        for year in context['active_years'].keys():
+            context['active_years'][year] = self.get_active_months(year)
+        
+        return context
+
+    def get_active_years(self):
+        # TODO: find a more efficient method for doing this lookup.
+        # SQLite doesn't seem to support DISTINCT, so the distinct() function
+        # on QuerySets doesn't work.
+        active_years = { je.published_on.year : None for je in
+                 JournalEntry.objects.all() }
+        return OrderedDict(sorted(active_years.items(), key=lambda k: k[0]))
+
+    def get_active_months(self, year):
+        return { je.published_on.month for je in
+                 JournalEntry.objects.filter(published_on__year=year) }
 
 
 class ArchiveIndexView(ArchiveViewMixin, dates.ArchiveIndexView):
