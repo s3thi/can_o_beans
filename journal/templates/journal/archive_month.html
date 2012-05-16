@@ -5,7 +5,7 @@
   <h2>Archives</h2>
   <ul>
     <li><a href="{% url cob_journal_index %}">Journal Index</a></li>
-    <li><a href="{% url cob_journal_index %}">Index for {{ month.year }}</a></li>
+    <li><a href="{% url cob_journal_year_archive_view year=month.year %}">Index for {{ month.year }}</a></li>
   </ul>
 </nav>
 {% endblock %}
