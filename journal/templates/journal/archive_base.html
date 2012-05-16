@@ -17,13 +17,4 @@
 {% endblock %}
 
 {% block sidebar %}
-    <nav>
-      <h2>Archives</h2>
-      <ul id="archive_year">
-        <li><a href="{% url cob_journal_index %}">All Posts</a>
-        {% for year, months in active_years.items %}
-          <li><a href="{% url cob_journal_year_archive_view year=year %}">{{ year }}</a></li>
-        {% endfor %}
-      </ul>
-    </nav>
 {% endblock %}

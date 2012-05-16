@@ -1,0 +1,11 @@
+{% extends "journal/archive_base.html" %}
+
+{% block sidebar %}
+<nav>
+  <h2>Archives</h2>
+  <ul>
+    <li><a href="{% url cob_journal_index %}">Journal Index</a></li>
+    <li><a href="{% url cob_journal_index %}">Index for {{ month.year }}</a></li>
+  </ul>
+</nav>
+{% endblock %}

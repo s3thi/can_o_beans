@@ -19,3 +19,16 @@
     <p>{{ journal_entry.content|safe }}</p>
   </section>
 {% endblock %}
+
+{% block sidebar %}
+<nav>
+  <h2>Archives</h2>
+  <ul>
+    <li><a href="{% url cob_journal_index %}">Journal Index</a></li>
+    <li><a href="{% url cob_journal_index %}">Index for {{ object.published_on.year }}</a></li>
+    {% with object.published_on|date:'M' as month_name %}
+      <li><a href="{% url cob_journal_month_archive_view year=object.published_on.year month=month_name %}">Index for {{ month_name }} {{ object.published_on.year }}</a></li>
+    {% endwith %}
+  </ul>
+</nav>
+{% endblock %}

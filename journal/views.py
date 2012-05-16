@@ -13,43 +13,24 @@ class ArchiveViewMixin(object):
 
     model = JournalEntry
     context_object_name = 'journal_entry_list'
-    template_name = 'journal/archive.html'
+    template_name = 'journal/archive_base.html'
     date_field = 'published_on'
-
-    def get_context_data(self, **kwargs):
-        context = super(ArchiveViewMixin, self).get_context_data(**kwargs)
-        context['active_years'] = self.get_active_years()
-        for year in context['active_years'].keys():
-            context['active_years'][year] = self.get_active_months(year)
-        
-        return context
-
-    def get_active_years(self):
-        # TODO: find a more efficient method for doing this lookup.
-        # SQLite doesn't seem to support DISTINCT, so the distinct() function
-        # on QuerySets doesn't work.
-        active_years = { je.published_on.year : None for je in
-                 JournalEntry.objects.all() }
-        return OrderedDict(sorted(active_years.items(), key=lambda k: k[0]))
-
-    def get_active_months(self, year):
-        return { je.published_on.month for je in
-                 JournalEntry.objects.filter(published_on__year=year) }
 
 
 class ArchiveIndexView(ArchiveViewMixin, dates.ArchiveIndexView):
 
-    pass
+    template_name = 'journal/archive_full.html'
 
 
 class YearArchiveView(ArchiveViewMixin, dates.YearArchiveView):
-
+    
+    template_name = 'journal/archive_year.html'
     make_object_list = True
 
 
 class MonthArchiveView(ArchiveViewMixin, dates.MonthArchiveView):
 
-    pass
+    template_name = 'journal/archive_month.html'
 
 
 class DayArchiveView(ArchiveViewMixin, dates.DayArchiveView):
