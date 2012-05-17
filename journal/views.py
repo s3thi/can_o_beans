@@ -13,8 +13,14 @@ class ArchiveViewMixin(object):
 
     model = JournalEntry
     context_object_name = 'journal_entry_list'
-    template_name = 'journal/archive_base.html'
+    template_name = 'journal/base.html'
     date_field = 'published_on'
+
+
+class JournalIndexView(ArchiveViewMixin, dates.ArchiveIndexView):
+    
+    template_name = 'journal/journal_index.html'
+    paginate_by = 10
 
 
 class ArchiveIndexView(ArchiveViewMixin, dates.ArchiveIndexView):

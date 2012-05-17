@@ -141,6 +141,35 @@ ul li {
     clear: both;
 }
 
+#pagination:after {
+    content: ".";
+    display: block;
+    visibility: hidden;
+    clear: both;
+    line-height: 0;
+    height: 0;
+}
+
+#pagination {
+    margin-bottom: 2.933333em;
+}
+
+#paginate_arrows {
+    float: left;
+}
+
+#paginate_arrow_previous {
+    margin-right: 1em;
+}
+
+#paginate_arrow_next {
+    margin-left: 1em;
+}
+
+#paginate_journal_archive {
+    float: right;
+}
+
 /* Styles for journal archive. */
 
 .journal_entry {

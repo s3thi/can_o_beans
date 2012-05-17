@@ -1,0 +1,39 @@
+{% extends "journal/base.html" %}
+{% block title %}Journal{% endblock %}
+
+{% block entry_list %}
+  {% for journal_entry in journal_entry_list %}
+    <section class="journal_entry">
+      <div class="journal_entry_head">
+        {% if journal_entry.title %}
+          <h2>{{ journal_entry.title }}</h2>
+        {% endif %}
+        <p class="journal_entry_meta"><a class="permalink" href="{{ journal_entry.url }}"> &infin; </a><span class="posted_on">Posted on {{ journal_entry.published_on }}</span></p>
+      </div>
+
+      <p class="journal_entry_content">{{ journal_entry.content|safe }}</p>
+    </section>
+  {% endfor %}
+{% endblock %}
+
+{% block pagination %}
+    <nav id="pagination">
+      <span id="paginate_arrows">
+        {% if page_obj.has_previous %}
+          <a id="paginate_arrow_previous" href="{% url cob_journal_index_paginated page=page_obj.previous_page_number %}">&larr; Previous Page</a>
+        {% else %}
+          <span id="paginate_arrow_previous">&larr; Previous Page</span>
+        {% endif %}
+
+        {% if page_obj.has_next %}
+          <a id="paginate_arrow_next" href="{% url cob_journal_index_paginated page=page_obj.next_page_number %}">Next Page &rarr;</a>
+        {% else %}
+          <span id="paginate_arrow_next">Next Page &rarr;</span>
+        {% endif %}
+      </span>
+
+      <span id="paginate_journal_archive">
+        <a href="{% url cob_journal_archive_index %}">Journal Archive</a>
+      </span>
+    </nav>
+{% endblock %}
