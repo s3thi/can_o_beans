@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
@@ -16,7 +16,7 @@ title of the entry.  For example, an entry titled "I Don't Like These
 New Bamboo Mats" will have "i-dont-like-these-new-bamboo-mats" as its
 slug.
 
-If this a slug is not unique, Can 'o Beans will eat a few characters
+If this slug is not unique, Can 'o Beans will eat a few characters
 off the end of the slug to make room for a unique numeric
 identifier. First, a "-1" will be appended to the end of the slug. If
 the new slug is still not unique, the "-1" will be incremented to
@@ -28,7 +28,7 @@ SLUG_MAXLEN = 256
 
 class Page(models.Model):
 
-    title = models.TextField(blank=True, null=True)
+    title = models.TextField(blank=False, null=False)
     slug = models.SlugField(max_length=SLUG_MAXLEN, blank=True, null=True)
     published_on = models.DateTimeField()
     content = models.TextField(blank=True, null=True)
@@ -46,22 +46,26 @@ class Page(models.Model):
     def save(self, *args, **kwargs):
         if self.title and not self.slug:
             self.slug = self.unique_slug_from_title()
+        # Why do I have to check this here? I already _said_ in the model
+        # that I don't want title to be NULL or blank.
+        elif not self.title:
+           raise IntegrityError('title can\'t be null or blank')
 
         try:
-            int(slug)
-        except ValueError:
+            int(self.slug)
+        except:
             pass
         else:
             # TODO: test this condition.
-            raise ValueError('slug cannot be an integer')
+            raise IntegrityError('slug cannot be an integer')
         
-        return super(JournalEntry, self).save(*args, **kwargs)
+        return super(Page, self).save(*args, **kwargs)
 
     def unique_slug_from_title(self):
         slug = slugify(self.title)
 
         def _check_duplicates(s):
-            return JournalEntry.objects.filter(
+            return self.__class__.objects.filter(
                 published_on=self.published_on,
                 slug=s
             )
