@@ -28,8 +28,8 @@ SLUG_MAXLEN = 256
 
 class Page(models.Model):
 
-    title = models.TextField(blank=False, null=False)
-    slug = models.SlugField(max_length=SLUG_MAXLEN, blank=True, null=True)
+    title = models.TextField()
+    slug = models.SlugField(max_length=SLUG_MAXLEN, blank=True)
     published_on = models.DateTimeField()
     content = models.TextField(blank=True, null=True)
     author = models.ForeignKey(User)
@@ -46,10 +46,12 @@ class Page(models.Model):
     def save(self, *args, **kwargs):
         if self.title and not self.slug:
             self.slug = self.unique_slug_from_title()
-        # Why do I have to check this here? I already _said_ in the model
-        # that I don't want title to be NULL or blank.
-        elif not self.title:
-           raise IntegrityError('title can\'t be null or blank')
+
+        # For some reason, Django sets the initial value of a TextField to ''
+        # instead of None. This means the NOT NULL constraint is never
+        # triggered. Setting it to None here does what I want.
+        if self.title == '':
+            self.title = None
 
         try:
             int(self.slug)
