@@ -99,6 +99,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'can_o_beans.urls'
@@ -123,6 +124,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 
     'devserver',
+    'debug_toolbar',
 
     'gravy',
     'books',
@@ -152,3 +154,5 @@ LOGGING = {
         },
     }
 }
+
+INTERNAL_IPS = ('127.0.0.1',)
