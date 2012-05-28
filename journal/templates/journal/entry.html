@@ -9,14 +9,14 @@
 
 {% block content %}
   <section class="journal_entry">
+
     <div class="journal_entry_head">
-      {% if journal_entry.title %}
-        <h2>{{ journal_entry.title }}</h2>
-      {% endif %}
-        <p class="journal_entry_meta"><a class="permalink" href="{{ journal_entry.url }}"> &infin; </a><span class="posted_on">Posted on {{ journal_entry.published_on }}</span></p>
+      <h2 class="journal_entry_title"><a href="{{ journal_entry.url }}">{{ journal_entry.title }}</a></h2>
+      <a href="{{ journal_entry.url }}"><span class="permalink"> &infin; </span></a><span class="journal_entry_meta">{{ journal_entry.published_on|date:"M d, Y" }}</span>
     </div>
 
-    <p>{{ journal_entry.content|safe }}</p>
+    {{ journal_entry.content|safe }}
+
   </section>
 {% endblock %}
 

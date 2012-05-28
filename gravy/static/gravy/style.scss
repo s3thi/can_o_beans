@@ -1,26 +1,25 @@
 @import "color_theme_vintage_modern";
+@import "yui_reset";
+
+$line-height: 1.5em;
 
 /* Main styles. */
 
-/* First, reset all styles so that the browser doesn't mess up the rhythm of
-   the page with its own crappy default styles. */
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,
-  th,td {
-    margin:0;
-    padding:0;
+html {
+    background-color: $body_background_color;
 }
 
 body {
     font-size: 15px;
     font-family: verdana, arial, sans-serif;
-    margin-left: 10em;
-    margin-right: 10em;
+    margin-left: 15%;
+    margin-right: 15%;
     background-color: $body_background_color;
 }
 
 a {
     text-decoration: none;
-    color: $eames;
+    color: $link_color;
 }
 
 a:hover {
@@ -29,11 +28,11 @@ a:hover {
 
 p {
     font-size: 1em;
-    line-height: 1.5em;
+    line-height: $line-height;
 
     /* Default margins are 1em. Change to match line height. */
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
+    margin-top: $line-height;
+    margin-bottom: $line-height;
 }
 
 h2 {
@@ -47,10 +46,9 @@ h2 {
 
 ul {
     margin-left: 2em;
-}
-
-ul li {
-    line-height: 1.5em;
+    li {
+        line-height: 1.5em;
+    }
 }
 
 #header_wrap {
@@ -186,6 +184,10 @@ ul li {
     vertical-align: middle;
 }
 
+.journal_entry_title a {
+    color: $h2_color;
+}
+
 .permalink {
     display: inline-block;
     color: $permalink_color;
@@ -208,4 +210,3 @@ ul li {
     color: $permalink_hover_color;
     text-decoration: none;
 }
-
