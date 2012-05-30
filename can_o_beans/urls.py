@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     # url(r'^admin/', include(admin.site.urls)),
 
+    (r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'registration/login.html'}),
     url(r'^journal/', include('journal.urls')),
 )
 
