@@ -1,5 +1,7 @@
-@import "color_theme_vintage_modern";
+// @import "color_theme_vintage_modern";
+@import "color_theme_vertebrae";
 @import "yui_reset";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:600,400);
 
 $line-height: 1.5em;
 
@@ -10,8 +12,9 @@ html {
 }
 
 body {
+    color: $body_text_color;
     font-size: 15px;
-    font-family: verdana, arial, sans-serif;
+    font-family: 'Open Sans', verdana, arial, sans-serif;
     margin-left: 15%;
     margin-right: 15%;
     background-color: $body_background_color;
@@ -36,12 +39,14 @@ p {
 }
 
 h2 {
-    font-size: 1.3em;
+    font-size: 1.5em;
 
     /* Make sure line height is same as paragraphs. */
     line-height: 1.1em;
     margin-bottom: 1.1em;
     color: $h2_color;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
 }
 
 ul {
@@ -60,6 +65,11 @@ ul {
     float: left;
     display: inline;
     margin-right: 2em;
+    font-family: 'Open Sans';
+
+    #header_ankur, #header_sethi, #header_in {
+        font-weight: 600;
+    }
 
     #header_ankur {
         color: $header_ankur_color;
@@ -73,7 +83,6 @@ ul {
         color: $header_in_color;
     }
 }
-
 
 #top_navbar {
     margin-bottom: 1.5em;
