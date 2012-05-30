@@ -3,7 +3,7 @@
 
 {% block entry_list %}
   {% for journal_entry in journal_entry_list %}
-    <section class="journal_entry">
+    <section class="content_block">
       <div class="journal_entry_head">
         <h2 class="journal_entry_title"><a href="{{ journal_entry.url }}">{{ journal_entry.title }}</a></h2>
               <a href="{{ journal_entry.url }}"><span class="permalink"> &infin; </span></a><span class="journal_entry_meta">{{ journal_entry.published_on|date:"M d, Y" }}</span>

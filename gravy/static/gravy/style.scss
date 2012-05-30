@@ -177,13 +177,13 @@ ul {
     float: right;
 }
 
-/* Styles for journal archive. */
-
-.journal_entry {
+.content_block {
     padding-bottom: 1.433333em;
     margin-bottom: 2.933333em;
     border-bottom: dotted 1px silver;
 }
+
+/* Styles for journal archive. */
 
 .journal_entry_meta {
     color: $journal_entry_meta_color;
