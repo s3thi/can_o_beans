@@ -25,16 +25,6 @@
           </ul>
         </nav>
       </div>  <!-- end header_wrap -->
-
-      <!--
-      <div id="contact">
-        <p>
-          <a href="mailto:contact@ankursethi.in">contact@ankursethi.in</a><br>
-          <a href="http://twitter.com/GnrlMxms">@GnrlMxms on twitter</a>
-          <a href="http://github.com/GeneralMaximus">GeneralMaximus on Github</a><br>
-        </p>
-      </div>
-      -->
     </header>
 
     <div id="page_wrap">
@@ -44,6 +34,17 @@
 
       <section class="col" id="sidebar">
         {% block sidebar %}
+        {% endblock %}
+
+        {% block sidebar_meta %}
+        {% if user.is_authenticated %}
+          <p>Logged in as <b>{{ user.username }}</b>.
+            <ul>
+              <li>Admin</li>
+              <li><a href="/logout/">Logout</a></li>
+            </ul>
+          </p>
+        {% endif %}
         {% endblock %}
       </section>
 
