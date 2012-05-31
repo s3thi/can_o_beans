@@ -131,7 +131,6 @@ INSTALLED_APPS = (
     'gravy',
     'books',
     'journal',
-    'pages',
 )
 
 # A sample logging configuration. The only tangible logging
