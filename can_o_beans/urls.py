@@ -13,7 +13,6 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'django.contrib.auth.views.logout_then_login',
         name='auth_logout'),
 
-    url(r'^admin/', include('admin.urls')),
     url(r'^journal/', include('journal.urls')),
 )
 
