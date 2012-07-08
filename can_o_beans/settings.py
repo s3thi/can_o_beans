@@ -103,7 +103,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'can_o_beans.urls'
@@ -155,10 +154,12 @@ LOGGING = {
     }
 }
 
-INTERNAL_IPS = ('127.0.0.1',)
 LOGIN_URL = '/login'
 
 try:
-    import local_settings
-except ImportError:
+    LOCAL_SETTINGS
+except NameError:
+    try:
+        from local_settings import *
+    except ImportError:
         pass
