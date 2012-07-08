@@ -1,5 +1,8 @@
 # Django settings for can_o_beans project.
 
+import os
+PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -12,7 +15,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/home/ankur/projects/can_o_beans/cob.db',
+        'NAME': os.path.join(PROJECT_ROOT, 'debug.db'),
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -125,7 +128,6 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'django.contrib.flatpages',
 
-    'devserver',
     'debug_toolbar',
 
     'gravy',
@@ -157,7 +159,9 @@ LOGGING = {
 }
 
 INTERNAL_IPS = ('127.0.0.1',)
-
 LOGIN_URL = '/login'
 
-SITE_ID = 1
+try:
+    import local_settings
+except ImportError:
+        pass
