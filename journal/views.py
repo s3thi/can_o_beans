@@ -5,9 +5,9 @@ from django.views.generic import DetailView, dates
 from django.utils.timezone import get_default_timezone
 from journal.models import JournalEntry
 
-
-months = { v: k for k, v in enumerate(month_abbr) }
-
+months = dict()
+for k, v in enumerate(month_abbr):
+    months[v] = k
 
 class ArchiveViewMixin(object):
 
