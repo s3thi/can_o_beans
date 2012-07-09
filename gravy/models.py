@@ -33,6 +33,7 @@ class Page(models.Model):
     published_on = models.DateTimeField()
     content = models.TextField(blank=True, null=True)
     author = models.ForeignKey(User)
+    published = models.BooleanField(default=False)
     
     class Meta:
         abstract = True
