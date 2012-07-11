@@ -12,10 +12,11 @@
 
     <div class="journal_entry_head">
       <h2 class="journal_entry_title"><a href="{{ journal_entry.url }}">{{ journal_entry.title }}</a></h2>
-      <a href="{{ journal_entry.url }}"><span class="permalink"> &infin; </span></a><span class="journal_entry_meta">{{ journal_entry.published_on|date:"M d, Y" }}</span>
     </div>
 
     {{ journal_entry.content|safe }}
+
+    <p>Posted on {{ journal_entry.published_on|date:"M d, Y" }}</p>
 
   </section>
 {% endblock %}

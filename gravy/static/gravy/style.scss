@@ -8,21 +8,20 @@ $line-height: 1.5em;
 /* Main styles. */
 
 html {
-    background-color: $body_background_color;
+    overflow-y: scroll;
 }
 
 body {
-    color: $body_text_color;
-    font-size: 15px;
+    font-size: 14px;
     font-family: 'Open Sans', verdana, arial, sans-serif;
-    margin-left: 15%;
-    margin-right: 15%;
-    background-color: $body_background_color;
+    width: 640px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 a {
     text-decoration: none;
-    color: $link_color;
+    color: #003366;
 }
 
 a:hover {
@@ -38,6 +37,10 @@ p {
     margin-bottom: $line-height;
 }
 
+h1 {
+    font-size: 2em;
+}
+
 h2 {
     font-size: 1.5em;
 
@@ -46,7 +49,7 @@ h2 {
     margin-bottom: 1.1em;
     color: $h2_color;
     font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
+    font-weight: bold;
 }
 
 ul {
@@ -54,43 +57,13 @@ ul {
 
     li {
         list-style: square;
-        line-height: 1.5em;
+        line-height: $line-height;
+        margin-bottom: $line-height;
     }
 }
 
-#header_wrap {
-    margin-top: 1em;
-}
-
-#header {
-    font-size: 1.2em;
-    float: left;
-    display: inline;
-    margin-right: 2em;
-    font-family: 'Open Sans';
-
-    #header_ankur, #header_sethi, #header_in {
-        font-weight: 600;
-    }
-
-    #header_ankur {
-        color: $header_ankur_color;
-    }
-
-    #header_sethi {
-        color: $header_sethi_color;
-    }
-
-    #header_in {
-        color: $header_in_color;
-    }
-}
-
-#top_navbar {
-    margin-bottom: 1.5em;
-    float: left;
-    display: inline;
-    vertical-align: middle;
+#ankur_sethi {
+    line-height: 2em;
 }
 
 #top_navbar ul {
@@ -105,45 +78,13 @@ ul {
     margin-right: 1em;
 }
 
-#top_navbar a {
-    padding: 0.3em;
-    font-size: 1.2em;
-    color: $top_navbar_link_color;
-}
-
-#top_navbar a:hover {
-    text-decoration: none;
-    background-color: $top_navbar_link_color;
-    color: white;
-    border-radius: 0.5em;
-}
-
-#contact {
-    float: right;
-    width: 25%;
-}
-
-#content {
-    float: left;
-}
-
-#sidebar {
-    float: right;
-}
-
-#page_wrap {
-    padding-top: 2.933333em;
-    padding-left: 1.5em;
-    border-top: solid 0.2em $page_wrap_border_color;
+#main_divider {
     clear: both;
-}
-
-#content {
-    width: 65%;
-}
-
-#sidebar {
-    width: 25%;
+    margin-top: $line-height;
+    margin-bottom: 2 * $line-height;
+    height: 1px;
+    background-color: black;
+    color: black;
 }
 
 #footer {
@@ -180,44 +121,7 @@ ul {
 }
 
 .content_block {
-    padding-bottom: 1.433333em;
-    margin-bottom: 2.933333em;
+    padding-bottom: $line-height;
+    margin-bottom: 2 * $line-height;
     border-bottom: dotted 1px silver;
-}
-
-/* Styles for journal archive. */
-
-.journal_entry_meta {
-    color: $journal_entry_meta_color;
-}
-
-.posted_on {
-    vertical-align: middle;
-}
-
-.journal_entry_title a {
-    color: $h2_color;
-}
-
-.permalink {
-    display: inline-block;
-    color: $permalink_color;
-    background-color: $permalink_background_color;
-    width: 1.5em;
-    height: 1.5em;
-    line-height: 1.5em;
-    font-size: 1.5em;
-    border-radius: 5em;
-    text-align: center;
-    text-decoration: none;
-    margin-right: 1em;
-    border: solid 1px $permalink_background_color;
-    vertical-align: middle;
-}
-
-.permalink:hover {
-    background-color: $permalink_hover_background_color;
-    border: solid 1px $permalink_hover_color;
-    color: $permalink_hover_color;
-    text-decoration: none;
 }

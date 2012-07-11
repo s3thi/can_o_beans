@@ -6,10 +6,11 @@
     <section class="content_block">
       <div class="journal_entry_head">
         <h2 class="journal_entry_title"><a href="{{ journal_entry.url }}">{{ journal_entry.title }}</a></h2>
-              <a href="{{ journal_entry.url }}"><span class="permalink"> &infin; </span></a><span class="journal_entry_meta">{{ journal_entry.published_on|date:"M d, Y" }}</span>
       </div>
 
       {{ journal_entry.content|safe }}
+
+      <p><span class="journal_entry_posted_on">Posted on {{ journal_entry.published_on|date:"M d, Y" }}</span></p>
     </section>
   {% endfor %}
 {% endblock %}
@@ -28,10 +29,6 @@
         {% else %}
           <span id="paginate_arrow_next">Next Page &rarr;</span>
         {% endif %}
-      </span>
-
-      <span id="paginate_journal_archive">
-        <a href="{% url cob_journal_archive_index %}">Journal Archive</a>
       </span>
     </nav>
 {% endblock %}

@@ -2,57 +2,38 @@
 
 <html lang="en-US">
   <head>
-    <title>{% block title %}{% endblock %} &mdash; {% block title_postfix %}AnkurSethi.in{% endblock %}</title>
+    <title>{% block title %}{% endblock %} &mdash; {% block title_postfix %}Ankur Sethi{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}gravy/style.css">
   </head>
 
   <body>
-    <header>
-      <div id="header_wrap">
-        {% block header %}
-          <h1 id="header">
-            <span id="header_ankur">Ankur</span>
-            <span id="header_sethi">Sethi</span></h1>
-          </h1>
-        {% endblock %}
+    <header id="main_header">
+      {% block header %}
+        <h1 id="ankur_sethi">Ankur Sethi</h1>
+      {% endblock %}
 
-        <nav id="top_navbar">
-          <ul>
-            <li><a href="/journal">Journal</a></li>
-            <li><a href="/books">Books</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
-        </nav>
-      </div>  <!-- end header_wrap -->
+      <nav id="top_navbar">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/journal">Journal</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 
+    <hr id="main_divider">
+
     <div id="page_wrap">
-      <section class="col" id="content">
+      <section id="content">
         {% block content %}{% endblock %}
-      </section>
-
-      <section class="col" id="sidebar">
-        {% block sidebar %}
-        {% endblock %}
-
-        {% block sidebar_meta %}
-        {% if user.is_authenticated %}
-          <p>Logged in as <b>{{ user.username }}</b>.
-            <ul>
-              <li>Admin</li>
-              <li><a href="/logout/">Logout</a></li>
-            </ul>
-          </p>
-        {% endif %}
-        {% endblock %}
       </section>
 
       <footer id="footer">
         {% block footer %}
-        <p>Powered by <a href="http://python.org">Python</a>, <a href="http://djangoproject.com">Django</a> and a <a href="http://github.com/GeneralMaximus/can_o_beans/">Can O' Beans</a>.</p>
+        <p>Website powered by <a href="http://python.org">Python</a>, <a href="http://djangoproject.com">Django</a> and a <a href="http://github.com/GeneralMaximus/can_o_beans/">Can O' Beans</a>.</p>
         {% endblock %}
       </footer>
-    </div> <!-- end page_wrap -->
+    </div>
   </body>
 </html>
