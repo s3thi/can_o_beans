@@ -2,6 +2,8 @@ from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
+from django.conf import settings
+import pytz
 
 
 ''' Okay, so this is how things work around here: when you go to /y/,
@@ -96,10 +98,13 @@ class Page(models.Model):
         return slug
 
     def url(self):
+        current_tz = pytz.timezone(settings.TIME_ZONE)
+        published_on_as_current_tz = self.published_on.astimezone(current_tz)
+        
         args = {
-            'year': self.published_on.year,
-            'month': self.published_on.strftime('%b'),
-            'day'  : self.published_on.day
+            'year':  published_on_as_current_tz.year,
+            'month': published_on_as_current_tz.strftime('%b'),
+            'day'  : published_on_as_current_tz.day
         }
 
         if self.slug:
