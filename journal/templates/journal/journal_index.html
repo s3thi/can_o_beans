@@ -24,6 +24,7 @@
 {% endblock %}
 
 {% block pagination %}
+  {% if journal_entry_list %}
     <nav id="pagination">
       <span id="paginate_arrows">
         {% if page_obj.has_previous %}
@@ -39,4 +40,5 @@
         {% endif %}
       </span>
     </nav>
+  {% endif %}
 {% endblock %}
