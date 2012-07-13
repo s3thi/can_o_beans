@@ -45,10 +45,10 @@ h2 {
     font-size: 1.5em;
 
     /* Make sure line height is same as paragraphs. */
-    line-height: 1.1em;
-    margin-bottom: 1.1em;
-    color: $h2_color;
-    font-family: 'Open Sans', sans-serif;
+    // line-height: 1.1em;
+    // margin-bottom: 1.1em;
+    // color: $h2_color;
+    // font-family: 'Open Sans', sans-serif;
     font-weight: bold;
 }
 
@@ -63,6 +63,7 @@ ul {
 }
 
 #ankur_sethi {
+    // margin-top: 0.5em;
     line-height: 2em;
 }
 
@@ -80,8 +81,8 @@ ul {
 
 #main_divider {
     clear: both;
-    margin-top: $line-height;
-    margin-bottom: 2 * $line-height;
+    margin-top: 1em;
+    margin-bottom: 2.5em;
     height: 1px;
     background-color: black;
     color: black;
@@ -101,7 +102,7 @@ ul {
 }
 
 #pagination {
-    margin-bottom: 2.933333em;
+    margin-bottom: $line-height;
 }
 
 #paginate_arrows {
@@ -124,4 +125,6 @@ ul {
     padding-bottom: $line-height;
     margin-bottom: 2 * $line-height;
     border-bottom: dotted 1px silver;
+    hyphens: auto;
+    text-align: justify;
 }

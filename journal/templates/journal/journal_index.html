@@ -8,7 +8,9 @@
         <h2 class="journal_entry_title"><a href="{{ journal_entry.url }}">{{ journal_entry.title }}</a></h2>
       </div>
 
-      {{ journal_entry.content|safe }}
+      <div class="content_wrap">
+        {{ journal_entry.content|safe }}
+      </div>
 
       <p><span class="journal_entry_posted_on">Posted on {{ journal_entry.published_on|date:"M d, Y" }}</span></p>
     </section>
