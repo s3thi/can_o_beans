@@ -14,4 +14,5 @@ DATABASES = {
     }
 }
 
-STATIC_ROOT = "/home/web/static"SITE_ID = 1
+STATIC_ROOT = "/home/web/static"
+SITE_ID = 1
