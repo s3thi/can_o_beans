@@ -26,6 +26,7 @@ class JournalIndexView(ArchiveViewMixin, dates.ArchiveIndexView):
     
     template_name = 'journal/journal_index.html'
     paginate_by = 10
+    allow_empty = True
 
 
 class ArchiveIndexView(ArchiveViewMixin, dates.ArchiveIndexView):
