@@ -16,7 +16,7 @@ for k, v in enumerate(month_abbr):
 
 class ArchiveViewMixin(object):
 
-    model = JournalEntry
+    queryset = JournalEntry.objects.filter(published=True)
     context_object_name = 'journal_entry_list'
     template_name = 'journal/base.html'
     date_field = 'published_on'
