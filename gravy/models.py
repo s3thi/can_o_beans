@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from django.core.cache import cache
 import pytz
 
 
@@ -47,6 +48,10 @@ class Page(models.Model):
             return self.content[:128]
 
     def save(self, *args, **kwargs):
+        # Clear the cache when an entry changes. On a high-traffic website, this
+        # would be a terrible solution. But it suffices for my personal blog.
+        cache.clear()
+
         if self.title and not self.slug:
             self.slug = self.unique_slug_from_title()
 
