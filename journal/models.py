@@ -1,6 +1,6 @@
 from gravy.models import Page
 from django.db.models.signals import post_save
-from journal.signals import clear_cache_on_save
+from gravy.signals import clear_cache_on_save
 
 
 class JournalEntry(Page):
