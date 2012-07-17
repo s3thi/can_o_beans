@@ -1,9 +1,17 @@
 from django.db import models, IntegrityError
+from django.db.models.signals import post_save
+from django.contrib.flatpages.models import FlatPage
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
 from django.conf import settings
 import pytz
+from gravy.signals import clear_cache_on_save
+
+
+# First, deal with flatpages and caching. Apparently, this is the best place
+# to do that.
+post_save.connect(clear_cache_on_save, sender=FlatPage)
 
 
 ''' Okay, so this is how things work around here: when you go to /y/,
