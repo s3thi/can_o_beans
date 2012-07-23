@@ -42,6 +42,7 @@ class Page(models.Model):
     slug = models.SlugField(max_length=SLUG_MAXLEN, blank=True)
     published_on = models.DateTimeField()
     content = models.TextField(blank=True, null=True)
+    content_processed = models.TextField(blank=True, null=True)
     author = models.ForeignKey(User)
     published = models.BooleanField(default=False)
     
