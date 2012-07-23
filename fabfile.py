@@ -19,10 +19,10 @@ def collect_static():
         with prefix(REMOTE_ACTIVATE_VENV):
             run('./manage.py collectstatic')
 
-def migrate():
+def migrate_journal():
     with cd(REMOTE_PROJECT_DIR):
         with prefix(REMOTE_ACTIVATE_VENV):
-            run('./manage.py migrate')
+            run('./manage.py migrate journal')
 
 def stop_uwsgi():
     run('su -c "supervisorctl stop uwsgi"')
@@ -43,5 +43,5 @@ def deploy():
     pull()
     compile_stylesheet()
     collect_static()
-    migrate()
+    migrate_journal()
     restart_uwsgi()
