@@ -3,7 +3,7 @@
 @import "yui_reset";
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:600,400);
 
-$line-height: 1.5em;
+$line-height: 1.45em;
 
 /* Main styles. */
 
@@ -38,6 +38,22 @@ p {
     margin-bottom: $line-height;
 }
 
+code {
+    font-family: monospace;
+    font-size: 1em;
+}
+
+pre {
+    font-family: monospace;
+    font-size: 1em;
+    color: white;
+    background-color: black;
+    padding: 1em;
+    margin-top: $line-height;
+    margin-bottom: $line-height;
+    border-radius: 5px;
+}
+
 h1 {
     font-size: 2em;
 }
@@ -51,6 +67,13 @@ h2 {
     // color: $h2_color;
     // font-family: 'Open Sans', sans-serif;
     font-weight: bold;
+    margin-bottom: $line-height;
+}
+
+h3 {
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: $line-height;
 }
 
 ul {
@@ -61,6 +84,15 @@ ul {
         line-height: $line-height;
         margin-bottom: $line-height;
     }
+}
+
+table {
+    margin-top: $line-height;
+    margin-bottom: $line-height;
+}
+
+td, th {
+    padding: 0em 1em 1em 0em;
 }
 
 #ankur_sethi {
