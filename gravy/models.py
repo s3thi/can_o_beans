@@ -122,3 +122,17 @@ class Page(models.Model):
         else:
             args['pk'] = self.id
             return reverse('cob_journal_entry_detail_view_pk', kwargs=args)
+
+    @models.permalink
+    def get_absolute_url(self):
+        current_tz = pytz.timezone(settings.TIME_ZONE)
+        published_on_as_current_tz = self.published_on.astimezone(current_tz)
+        
+        url_args = {
+            'year':  published_on_as_current_tz.year,
+            'month': published_on_as_current_tz.strftime('%b'),
+            'day'  : published_on_as_current_tz.day,
+            'slug': self.slug
+        }
+
+        return ('cob_journal_entry_detail_view', (), url_args)
