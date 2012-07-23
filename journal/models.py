@@ -4,6 +4,7 @@ from gravy.signals import clear_cache_on_save
 
 
 class JournalEntry(Page):
-    pass
+    class Meta:
+    	verbose_name_plural = "journal entries"
 
 post_save.connect(clear_cache_on_save, sender=JournalEntry)
