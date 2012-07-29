@@ -73,6 +73,8 @@ class Page(models.Model):
             # TODO: test this condition.
             raise IntegrityError('slug cannot be an integer')
         
+        self.content_processed = self.content
+
         return super(Page, self).save(*args, **kwargs)
 
     def unique_slug_from_title(self):
