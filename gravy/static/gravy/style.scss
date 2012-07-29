@@ -77,12 +77,34 @@ h3 {
 }
 
 ul {
-    margin-left: 2em;
+    margin-left: $line-height;
 
     li {
         list-style: square;
         line-height: $line-height;
         margin-bottom: $line-height;
+
+        ul {
+            margin-top: $line-height;
+        }
+    }
+}
+
+ol {
+    margin-left: $line-height;
+
+    li {
+        list-style: decimal;
+        line-height: $line-height;
+        margin-bottom: $line-height;
+
+        ul {
+            margin-top: $line-height;
+            
+            li {
+                list-style: square;
+            }
+        }
     }
 }
 
@@ -117,8 +139,9 @@ td, th {
     margin-top: 1em;
     margin-bottom: 2.5em;
     height: 1px;
-    background-color: black;
-    color: black;
+    background-color: #555;
+    color: #555;
+    border: solid 1px #555;
 }
 
 #footer {
@@ -158,6 +181,8 @@ td, th {
     padding-bottom: $line-height;
     margin-bottom: 2 * $line-height;
     border-bottom: dotted 1px silver;
-    hyphens: auto;
-    text-align: justify;
+}
+
+.journal_entry_posted_on {
+    color: #555;
 }
