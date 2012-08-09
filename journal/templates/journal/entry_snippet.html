@@ -1,11 +1,10 @@
 <section class="content_block">
 	<div class="journal_entry_head">
   		<h2 class="journal_entry_title"><a href="{{ journal_entry.url }}">{{ journal_entry.title }}</a></h2>
+  		<p class="journal_entry_posted_on">Posted on {{ journal_entry.published_on|date:"M d, Y" }}</p>
 	</div>
 
 	<div class="content_wrap">
   		{{ journal_entry.content_processed|safe }}
 	</div>
-
-	<p class="journal_entry_posted_on">Posted on {{ journal_entry.published_on|date:"M d, Y" }}</p>
 </section>

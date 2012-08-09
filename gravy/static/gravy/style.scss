@@ -1,125 +1,50 @@
 // @import "color_theme_vintage_modern";
-@import "color_theme_vertebrae";
-@import "yui_reset";
+// @import "color_theme_vertebrae";
+// @import "yui_reset";
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:600,400);
-
-$line-height: 1.45em;
-
-/* Main styles. */
 
 html {
     overflow-y: scroll;
 }
 
 body {
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Open Sans', verdana, arial, sans-serif;
-    width: 640px;
+    width: 750px;
     margin-left: auto;
     margin-right: auto;
+    background-color: #224422;
+    color: #424254;
 }
 
 a {
     text-decoration: none;
-    color: #003399;
     font-weight: bold;
+    color: #423F37;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-p {
-    font-size: 1em;
-    line-height: $line-height;
-
-    /* Default margins are 1em. Change to match line height. */
-    margin-top: $line-height;
-    margin-bottom: $line-height;
-}
-
-code {
-    font-family: monospace;
-    font-size: 1em;
-}
-
 pre {
-    font-family: monospace;
-    font-size: 1em;
     color: white;
-    background-color: black;
-    padding: 1em;
-    margin-top: $line-height;
-    margin-bottom: $line-height;
-    border-radius: 5px;
+    background-color: #322F27;
+    padding: 0.5em;
 }
 
-h1 {
-    font-size: 2em;
+h1, h2, h3, h5, h6 {
+    color: #423F37;
 }
 
-h2 {
-    font-size: 1.5em;
-
-    /* Make sure line height is same as paragraphs. */
-    // line-height: 1.1em;
-    // margin-bottom: 1.1em;
-    // color: $h2_color;
-    // font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    margin-bottom: $line-height;
-}
-
-h3 {
-    font-size: 1.25em;
-    font-weight: bold;
-    margin-bottom: $line-height;
-}
-
-ul {
-    margin-left: $line-height;
-
-    li {
-        list-style: square;
-        line-height: $line-height;
-        margin-bottom: $line-height;
-
-        ul {
-            margin-top: $line-height;
-        }
-    }
-}
-
-ol {
-    margin-left: $line-height;
-
-    li {
-        list-style: decimal;
-        line-height: $line-height;
-        margin-bottom: $line-height;
-
-        ul {
-            margin-top: $line-height;
-            
-            li {
-                list-style: square;
-            }
-        }
-    }
-}
-
-table {
-    margin-top: $line-height;
-    margin-bottom: $line-height;
-}
-
-td, th {
-    padding: 0em 1em 1em 0em;
+#main_header {
+    margin-bottom: 1em;
+    padding-left: 2em;
 }
 
 #ankur_sethi {
-    // margin-top: 0.5em;
-    line-height: 2em;
+    margin-bottom: 0em;
+    color: white;
 }
 
 #top_navbar ul {
@@ -134,18 +59,22 @@ td, th {
     margin-right: 1em;
 }
 
-#main_divider {
-    clear: both;
-    margin-top: 1em;
-    margin-bottom: 2.5em;
-    height: 1px;
-    background-color: #555;
-    color: #555;
-    border: solid 1px #555;
+#top_navbar a {
+    color: #E8CAA4;
 }
 
 #footer {
     clear: both;
+}
+
+#pagination, #footer {
+    color: #E8CAA4;
+    padding-left: 2em;
+    margin-top: 1em;
+
+    a {
+        color: #E8CAA4;
+    }
 }
 
 #pagination:after {
@@ -155,10 +84,6 @@ td, th {
     clear: both;
     line-height: 0;
     height: 0;
-}
-
-#pagination {
-    margin-bottom: 2 * $line-height;
 }
 
 #paginate_arrows {
@@ -178,11 +103,17 @@ td, th {
 }
 
 .content_block {
-    padding-bottom: $line-height;
-    margin-bottom: 2 * $line-height;
-    border-bottom: dotted 1px silver;
+    background-color: white;
+    padding: 3em;
+    // padding-left: 3em;
+    // padding-right: 3em;
+    margin-top: 2em;
 }
 
 .journal_entry_posted_on {
     color: #555;
+}
+
+.journal_entry_title {
+    font-family: "Georgia", serif;
 }
