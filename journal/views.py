@@ -1,5 +1,6 @@
 import datetime
 from calendar import month_abbr
+from django.contrib.syndication.views import Feed
 
 try:
     from collections import OrderedDict
@@ -80,3 +81,19 @@ class SlugEntryView(EntryView):
             published_on__lte=published_on_upper,
             slug=self.kwargs['slug']
         )
+
+
+class LatestEntriesFeed(Feed):
+    title = 'Latest journal entries from AnkurSethi.in'
+    link = '/journal/'
+    author_name = 'Ankur Sethi'
+    author_email = 'contact@ankursethi.in'
+
+    def items(self):
+        return JournalEntry.objects.filter(published=True).order_by('-published_on')[:10]
+
+    def item_title(self, item):
+        return item.title
+
+    def item_description(self, item):
+        return item.content_processed

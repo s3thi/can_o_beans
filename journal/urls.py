@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from journal.views import (JournalIndexView, ArchiveIndexView,  YearArchiveView,
                            MonthArchiveView, DayArchiveView, EntryView,
-                           SlugEntryView)
+                           SlugEntryView, LatestEntriesFeed)
 
 y = '(?P<year>\d{4})'
 m = '(?P<month>\w+)'
@@ -26,5 +26,7 @@ urlpatterns = patterns('',
     url('^{0}/{1}/{2}/{3}/$'.format(y, m, d, k), EntryView.as_view(),
         name='cob_journal_entry_detail_view_pk'),
     url('^{0}/{1}/{2}/{3}/$'.format(y, m, d, s), SlugEntryView.as_view(),
-        name='cob_journal_entry_detail_view')
+        name='cob_journal_entry_detail_view'),
+
+    url(r'^feed/$', LatestEntriesFeed(), name='feed_view'),
 )
