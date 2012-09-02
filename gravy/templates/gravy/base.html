@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 
-<html lang="en-US">
+<html lang="en">
   <head>
     <title>{% block title %}{% endblock %} &mdash; {% block title_postfix %}Ankur Sethi{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}gravy/style.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url feed_view %}">
+    <meta charset="utf-8">
+
+    {% block extrahead %}{% endblock extrahead %}
 
     <!-- Google Analytics Code -->
     <script type="text/javascript">
