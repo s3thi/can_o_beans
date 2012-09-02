@@ -1,11 +1,5 @@
 {% extends "gravy/base.html" %}
 
-{% block extrahead %}
-    {{ block.super }}
-
-    <a rel="author" href="https://plus.google.com/111321888644675864725?rel=author">Ankur Sethi</a>
-{% endblock extrahead %}
-
 {% block title %}
     {% if journal_entry.title %}
         {{ journal_entry.title }}

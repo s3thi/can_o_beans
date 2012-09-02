@@ -3,13 +3,9 @@
 
 {% block entry_list %}
   {% if journal_entry_list %}
-    <div itemscope itemtype="http://schema.org/Blog">
-        <div itemprop="blogPost">
-            {% for journal_entry in journal_entry_list %}
-              {% include "journal/entry_snippet.html" %}
-            {% endfor %}
-        </div>
-    </div>
+    {% for journal_entry in journal_entry_list %}
+      {% include "journal/entry_snippet.html" %}
+    {% endfor %}
   {% else %}
     <section class="content_block">
         <p>No journal entries yet, but do check back soon!</p>
