@@ -40,7 +40,7 @@ def start_nginx():
     run('su -c "invoke-rc.d nginx start"')
 
 def clear_cache():
-    run('nc “flushall\n” localhost 11211')
+    run('nc "flushall\n" localhost 11211')
 
 def deploy():
     pull()
