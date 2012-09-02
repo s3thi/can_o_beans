@@ -39,9 +39,13 @@ def stop_nginx():
 def start_nginx():
     run('su -c "invoke-rc.d nginx start"')
 
+def clear_cache():
+    run('nc “flushall\n” localhost 11211')
+
 def deploy():
     pull()
     compile_stylesheet()
     collect_static()
     migrate_journal()
     restart_uwsgi()
+    clear_cache()
