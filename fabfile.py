@@ -9,11 +9,6 @@ def pull():
     with cd(REMOTE_PROJECT_DIR):
         run('git pull')
 
-def compile_stylesheet():
-    remote_static_dir = os.path.join(REMOTE_PROJECT_DIR, 'gravy/static/gravy')
-    with cd(remote_static_dir):
-        run('sass style.scss:style.css')
-
 def collect_static():
     with cd(REMOTE_PROJECT_DIR):
         with prefix(REMOTE_ACTIVATE_VENV):
@@ -44,7 +39,6 @@ def clear_cache():
 
 def deploy():
     pull()
-    compile_stylesheet()
     collect_static()
     migrate_journal()
     restart_uwsgi()
