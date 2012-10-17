@@ -2,20 +2,19 @@
 
 <article class="content_block" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="journal_entry_head">
-
         <h2 class="journal_entry_title">
             <a href="{{ journal_entry.url }}" itemprop="url">
                 <span itemprop="headline">
                     {{ journal_entry.title }}</span>
             </a>
         </h2>
-
-        <time class="journal_entry_posted_on" itemprop="datePublished" datetime="{{ journal_entry.published_on|utc|date:"Y-m-d" }}T{{ journal_entry.published_on|utc|date:"G:i" }}Z">
-            Posted on {{ journal_entry.published_on|date:"M d, Y" }}
-        </time>
     </header>
 
     <div class="content_wrap" itemprop="articleBody">
         {{ journal_entry.content_processed|safe }}
     </div>
+
+    <time class="journal_entry_posted_on" itemprop="datePublished" datetime="{{ journal_entry.published_on|utc|date:"Y-m-d" }}T{{ journal_entry.published_on|utc|date:"G:i" }}Z">
+        Posted on {{ journal_entry.published_on|date:"F d, Y" }}
+    </time>
 </article>
