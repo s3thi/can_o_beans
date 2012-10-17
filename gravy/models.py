@@ -39,7 +39,7 @@ SLUG_MAXLEN = 256
 class Page(models.Model):
 
     title = models.TextField()
-    slug = models.SlugField(max_length=SLUG_MAXLEN, blank=True)
+    slug = models.SlugField(max_length=SLUG_MAXLEN, blank=True, unique_for_date='published_on')
     published_on = models.DateTimeField()
     content = models.TextField(blank=True)
     content_processed = models.TextField(blank=True)
