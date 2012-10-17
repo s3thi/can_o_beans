@@ -33,6 +33,12 @@ pre {
   line-height: 20px;
   margin-top: 25px;
   margin-bottom: 25px;
+  font-family: "Courier New", "Courier", monospace;
+  font-size: 14px;
+}
+
+code {
+  font-family: "Courier New", "Courier", monospace;
 }
 
 p + p {
@@ -111,16 +117,4 @@ p + h6 {
   font-size: 12px;
   border-top: solid 1px #CCC;
   margin-top: 30px;
-}
-
-pre {
-  font-family: "Courier New", "Courier", monospace;
-  font-size: 14px;
-}
-
-code {
-  font-family: "Courier New", "Courier", monospace;
-  //background-color: #DDD;
-  //border-radius: 2px;
-  /*padding: 0px 5px;*/
 }
