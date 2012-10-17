@@ -1,5 +1,4 @@
 *.pyc
 *.pyo
 *.db
-.sass-cache/
 local_settings.py
