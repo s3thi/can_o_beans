@@ -2,7 +2,7 @@
 
 <div class="content-block" itemscope itemtype="http://schema.org/BlogPosting">
     <h2 class="content-block-title">
-        <a href="{{ journal_entry.url }}" itemprop="url">
+        <a href="{{ journal_entry.get_absolute_url }}" itemprop="url">
             <span itemprop="headline">
                 {{ journal_entry.title }}
             </span>
