@@ -11,44 +11,19 @@ from django.views.generic import DetailView, dates
 from django.utils.timezone import get_default_timezone
 from journal.models import JournalEntry
 
+
 months = dict()
 for k, v in enumerate(month_abbr):
     months[v] = k
 
-class ArchiveViewMixin(object):
 
+class JournalIndexView(dates.ArchiveIndexView):
     queryset = JournalEntry.objects.filter(published=True)
     context_object_name = 'journal_entry_list'
-    template_name = 'journal/base.html'
     date_field = 'published_on'
-
-
-class JournalIndexView(ArchiveViewMixin, dates.ArchiveIndexView):
-    
-    template_name = 'journal/journal_index.html'
     paginate_by = 10
     allow_empty = True
-
-
-class ArchiveIndexView(ArchiveViewMixin, dates.ArchiveIndexView):
-
-    template_name = 'journal/archive_full.html'
-
-
-class YearArchiveView(ArchiveViewMixin, dates.YearArchiveView):
-    
-    template_name = 'journal/archive_year.html'
-    make_object_list = True
-
-
-class MonthArchiveView(ArchiveViewMixin, dates.MonthArchiveView):
-
-    template_name = 'journal/archive_month.html'
-
-
-class DayArchiveView(ArchiveViewMixin, dates.DayArchiveView):
-
-    pass
+    template_name = 'journal/journal_index.html'
 
 
 class EntryView(DetailView):
