@@ -52,13 +52,9 @@ class DayArchiveView(ArchiveViewMixin, dates.DayArchiveView):
 
 
 class EntryView(DetailView):
-
     model = JournalEntry
     context_object_name = 'journal_entry'
     template_name = 'journal/entry.html'
-
-
-class SlugEntryView(EntryView):
 
     def get_queryset(self):
         published_on_lower = datetime.datetime(
