@@ -2,5 +2,4 @@
 *.pyo
 *.db
 .sass-cache/
-gravy/static/gravy/*.css
 local_settings.py
