@@ -1,34 +1,34 @@
-{% extends "journal/base.html" %}
+{% extends "gravy/base.html" %}
 {% block title %}Journal{% endblock %}
 
-{% block entry_list %}
+{% block content %}
   {% if journal_entry_list %}
     {% for journal_entry in journal_entry_list %}
       {% include "journal/entry_snippet.html" %}
     {% endfor %}
   {% else %}
-    <section class="content_block">
+    <div class="content-block">
         <p>No journal entries yet, but do check back soon!</p>
-    </section>
+    </div>
   {% endif %}
-{% endblock %}
+{% endblock content %}
 
-{% block pagination %}
+{% block extraoutside_before_footer %}
   {% if journal_entry_list %}
-    <nav id="pagination">
-      <span id="paginate_arrows">
+    <div id="pagination" class="outside-block">
+      <div class="arrow-group">
         {% if page_obj.has_previous %}
-          <a id="paginate_arrow_previous" href="{% url cob_journal_index_paginated page=page_obj.previous_page_number %}">&larr; Previous Page</a>
+          <a class="previous" href="{% url cob_journal_index_paginated page=page_obj.previous_page_number %}">&larr; Previous Page</a>
         {% else %}
-          <span id="paginate_arrow_previous">&larr; Previous Page</span>
+          <span class="previous">&larr; Previous Page</span>
         {% endif %}
 
         {% if page_obj.has_next %}
-          <a id="paginate_arrow_next" href="{% url cob_journal_index_paginated page=page_obj.next_page_number %}">Next Page &rarr;</a>
+          <a class="next" href="{% url cob_journal_index_paginated page=page_obj.next_page_number %}">Next Page &rarr;</a>
         {% else %}
-          <span id="paginate_arrow_next">Next Page &rarr;</span>
+          <span class="next">Next Page &rarr;</span>
         {% endif %}
-      </span>
-    </nav>
+      </div>
+    </div>
   {% endif %}
-{% endblock %}
+{% endblock extraoutside_before_footer %}

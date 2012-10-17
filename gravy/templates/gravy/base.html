@@ -25,12 +25,12 @@
   </head>
 
   <body>
-    <header id="main_header">
+    <div class="header outside-block">
       {% block header %}
-        <h1 id="ankur_sethi">Ankur Sethi</h1>
+        <h1 class="logo">Ankur Sethi</h1>
       {% endblock %}
 
-      <nav id="top_navbar">
+      <div class="navbar">
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/journal">Journal</a></li>
@@ -38,19 +38,20 @@
           <li><a href="/contact">Contact</a></li>
           <li><a href="{% url feed_view %}">RSS Feed</a></li>
         </ul>
-      </nav>
-    </header>
+      </div>
+    </div>
 
     <div id="page_wrap">
-      <section id="content">
         {% block content %}{% endblock %}
-      </section>
+    </div>
 
-      <footer id="footer">
-        {% block footer %}
-        <p>Website powered by <a href="http://python.org">Python</a>, <a href="http://djangoproject.com">Django</a> and a <a href="http://github.com/GeneralMaximus/can_o_beans/">Can O' Beans</a>.</p>
-        {% endblock %}
-      </footer>
+    {% block extraoutside_before_footer %}
+    {% endblock extraoutside_before_footer %}
+
+    <div class="outside-block" id="footer">
+      {% block footer %}
+      <p>Website powered by <a href="http://python.org">Python</a>, <a href="http://djangoproject.com">Django</a> and a <a href="http://github.com/GeneralMaximus/can_o_beans/">Can O' Beans</a>.</p>
+      {% endblock %}
     </div>
   </body>
 </html>
