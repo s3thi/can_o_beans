@@ -1,20 +1,8 @@
 import datetime
-from calendar import month_abbr
 from django.contrib.syndication.views import Feed
-
-try:
-    from collections import OrderedDict
-except ImportError:
-    from ordereddict import OrderedDict
-
 from django.views.generic import DetailView, dates
 from django.utils.timezone import get_default_timezone
 from journal.models import JournalEntry
-
-
-months = dict()
-for k, v in enumerate(month_abbr):
-    months[v] = k
 
 
 class JournalIndexView(dates.ArchiveIndexView):
@@ -32,6 +20,11 @@ class EntryView(DetailView):
     template_name = 'journal/entry.html'
 
     def get_queryset(self):
+        from calendar import month_abbr
+        months = dict()
+        for k, v in enumerate(month_abbr):
+            months[v] = k
+        
         published_on_lower = datetime.datetime(
             year=int(self.kwargs['year']),
             month=months[self.kwargs['month']],
