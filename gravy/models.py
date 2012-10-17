@@ -56,22 +56,17 @@ class Page(models.Model):
             return self.content[:128]
 
     def save(self, *args, **kwargs):
-        if self.title and not self.slug:
-            self.slug = self.unique_slug_from_title()
-
         # For some reason, Django sets the initial value of a TextField to ''
         # instead of None. This means the NOT NULL constraint is never
         # triggered. Setting it to None here does what I want.
         if self.title == '':
             self.title = None
 
-        try:
-            int(self.slug)
-        except:
-            pass
-        else:
-            # TODO: test this condition.
-            raise IntegrityError('slug cannot be an integer')
+        if self.slug == '':
+            self.slug = None
+
+        if self.title and not self.slug:
+            self.slug = self.unique_slug_from_title()
         
         self.content_processed = self.content
 
@@ -95,7 +90,7 @@ class Page(models.Model):
 
             # If current slug is too long, truncate it to make room for the
             # postfix.
-            if len(slug) == SLUG_MAXLEN:
+            if len(slug) >= SLUG_MAXLEN:
                 newlen = SLUG_MAXLEN - len(slug_postfix_str)
                 slug = slug[:newlen]
 
@@ -104,26 +99,9 @@ class Page(models.Model):
                 slug = slug[0:-1]
 
             slug += slug_postfix_str
-            duplicates = check_duplicates(slug)
+            duplicates = _check_duplicates(slug)
 
         return slug
-
-    def url(self):
-        current_tz = pytz.timezone(settings.TIME_ZONE)
-        published_on_as_current_tz = self.published_on.astimezone(current_tz)
-        
-        args = {
-            'year':  published_on_as_current_tz.year,
-            'month': published_on_as_current_tz.strftime('%b'),
-            'day'  : published_on_as_current_tz.day
-        }
-
-        if self.slug:
-            args['slug'] = self.slug
-            return reverse('cob_journal_entry_detail_view', kwargs=args)
-        else:
-            args['pk'] = self.id
-            return reverse('cob_journal_entry_detail_view_pk', kwargs=args)
 
     @models.permalink
     def get_absolute_url(self):
