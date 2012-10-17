@@ -12,7 +12,7 @@ def pull():
 def collect_static():
     with cd(REMOTE_PROJECT_DIR):
         with prefix(REMOTE_ACTIVATE_VENV):
-            run('./manage.py collectstatic')
+            run('./manage.py collectstatic --noinput')
 
 def migrate_journal():
     with cd(REMOTE_PROJECT_DIR):
