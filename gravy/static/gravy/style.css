@@ -11,6 +11,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   background-color: #333333;
+  background-image: url("/static/gravy/pat.png");
   font-size: 14px;
   line-height: 25px;
   color: #555;
@@ -18,8 +19,7 @@ body {
 
 a {
   text-decoration: none;
-  font-weight: bold;
-  color: #369;
+  color: #B65A05;
 }
 
 a:hover {
@@ -79,12 +79,14 @@ p + h6 {
 }
 
 .outside-block a {
-  color: #E8CAA4;
+  color: #F1AD57;
 }
 
 .logo {
-  font-family: 'Open Sans', verdana, arial, sans-serif;
-  color: white;
+  font-family: 'Merriweather', 'Palatino Linotype','Palatino', 'Georgia', serif;
+  color: #F8F2EF;
+  font-size: 1.5em;
+  font-weight: normal;
 }
 
 .navbar ul {
@@ -110,7 +112,7 @@ p + h6 {
   padding: 25px 45px;
   margin-top: 30px;
   margin-bottom: 30px;
-  border-radius: 2px;
+  box-shadow: 0px 0px 1px 1px #2C2C2C;
 }
 
 .content-block-footer {

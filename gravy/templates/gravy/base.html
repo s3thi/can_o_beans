@@ -27,16 +27,16 @@
   <body>
     <div class="header outside-block">
       {% block header %}
-        <h1 class="logo">Ankur Sethi</h1>
+        <h1 class="logo">ankur sethi makes things</h1>
       {% endblock %}
 
       <div class="navbar">
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/journal">Journal</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact</a></li>
-          <li><a href="{% url feed_view %}">RSS Feed</a></li>
+          <li><a href="/">home</a></li>
+          <li><a href="/journal">journal</a></li>
+          <li><a href="/about">about</a></li>
+          <li><a href="/contact">contact</a></li>
+          <li><a href="{% url feed_view %}">feed</a></li>
         </ul>
       </div>
     </div>
@@ -50,7 +50,7 @@
 
     <div class="outside-block" id="footer">
       {% block footer %}
-      <p>Website powered by <a href="http://python.org">Python</a>, <a href="http://djangoproject.com">Django</a> and a <a href="http://github.com/GeneralMaximus/can_o_beans/">Can O' Beans</a>.</p>
+      <p>Website powered by <a href="http://python.org">Python</a>, <a href="http://djangoproject.com">Django</a> and a <a href="http://github.com/GeneralMaximus/can_o_beans/">Can O' Beans</a>. See <a href="/license/">license</a> for legal incantations.</p>
       {% endblock %}
     </div>
   </body>
