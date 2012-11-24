@@ -126,10 +126,14 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.flatpages',
     'django.contrib.sitemaps',
+    
     'south',
+    'taggit',
+    
     'gravy',
     'books',
     'journal',
+    'bookmarks'
 )
 
 # A sample logging configuration. The only tangible logging
