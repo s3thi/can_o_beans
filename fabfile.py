@@ -14,10 +14,10 @@ def collect_static():
         with prefix(REMOTE_ACTIVATE_VENV):
             run('./manage.py collectstatic --noinput')
 
-def migrate_journal():
+def migrate_app(app_name):
     with cd(REMOTE_PROJECT_DIR):
         with prefix(REMOTE_ACTIVATE_VENV):
-            run('./manage.py migrate journal')
+            run('./manage.py migrate {0}'.format(app_name))
 
 def stop_uwsgi():
     run('su -c "supervisorctl stop uwsgi"')
@@ -40,6 +40,7 @@ def clear_cache():
 def deploy():
     pull()
     collect_static()
-    migrate_journal()
+    migrate_app('journal')
+    migrate_app('bookmarks')
     restart_uwsgi()
     clear_cache()
