@@ -183,3 +183,31 @@ a.label {
 .pagination {
   margin-top: 20px;
 }
+
+.cob-form {
+  margin-top: 20px;
+}
+
+.cob-form .control-group {
+  margin-top: 10px;
+}
+
+.cob-form input[type="text"] {
+  font-size: 1.3em;
+  width: 20em;
+}
+
+.cob-form textarea {
+  font-size: 1.3em;
+  width: 20em;
+  height: 10em;
+}
+
+.cob-form input[type="submit"] {
+  margin-top: 20px;
+  font-size: 1.3em;
+}
+
+.cob-form .help-inline {
+  margin-left: 1em;
+}

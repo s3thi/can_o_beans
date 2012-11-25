@@ -1,14 +1,19 @@
 {% extends "gravy/base.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}New Bookmark{% endblock title %}
+
+{% block extrahead %}
+	<link rel="stylesheet" href="{{ STATIC_URL }}uni_form/uni-form.css" type="text/css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}uni_form/default.uni-form.css" type="text/css">
+{% endblock extrahead %}
 
 {% block content %}
 	<div class="content-block">
 		<h2>Add Bookmark</h2>
-		<form action="." method="POST">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<p><input type="submit"></p>
-		</form>
+		<a class="label" href="{% url bookmarks_list %}">show all bookmarks</a>
+		
+		{% crispy form %}
 	</div>
+
 {% endblock content %}

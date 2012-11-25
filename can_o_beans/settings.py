@@ -130,6 +130,7 @@ INSTALLED_APPS = (
     
     'south',
     'taggit',
+    'crispy_forms',
     
     'gravy',
     'journal',
