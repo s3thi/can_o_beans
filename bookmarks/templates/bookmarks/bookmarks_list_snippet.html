@@ -1,0 +1,48 @@
+{% load humanize %}
+
+{% if object_list %}
+	{% for bookmark in object_list %}
+		<div class="bookmark">
+			<div class="bookmark-title">
+				<a target="blank" rel="nofollow" class="bookmark-url" href="{{ bookmark.url }}">{{ bookmark.title }}</a>
+				<span class="bookmark-hostname">
+					(<a href="{% url bookmarks_hostname hostname=bookmark.hostname %}">{{ bookmark.hostname }}</a>)
+				</span>
+			</div>
+
+			{% if bookmark.note %}
+				<div class="bookmark-note">
+					<p>{{ bookmark.note|safe }}</p>
+				</div>
+			{% endif %}
+			
+			<div class="bookmark-tags">
+				{% for tag in bookmark.tags.all %}
+					<a class="tag" href="{% url bookmarks_tagged tags=tag.name %}">{{ tag }}</a>
+				{% endfor %}
+			</div>
+			
+			<span class="bookmark-ago">added {{ bookmark.created|naturaltime }}</span> 
+		</div>
+	{% endfor %}
+
+	<div class="pagination">
+        {% if page_obj.has_previous %}
+            <a class="label" href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% else %}
+	        <span class="label disabled">← prev</span>
+        {% endif %}
+
+        <span class="current">
+            page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+        {% else %}
+        	<span class="label disabled">next →</span>
+    	{% endif %}
+	</div>
+{% else %}
+	<p>Sorry, no bookmarks found.</p>
+{% endif %}

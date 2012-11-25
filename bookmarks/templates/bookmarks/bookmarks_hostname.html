@@ -1,0 +1,12 @@
+{% extends "gravy/base.html" %}
+
+{% block title %}All bookmarks from {{ hostname }}{% endblock title %}
+
+{% block content %}
+	<div class="content-block">
+		<h2>All Bookmarks from <i>{{ hostname }}</i></h2>
+		<a class="label" href="{% url bookmarks_list %}">show all bookmarks</a>
+
+		{% include "bookmarks/bookmarks_list_snippet.html" %}
+	</div>
+{% endblock content %}

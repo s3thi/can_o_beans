@@ -159,8 +159,6 @@ LOGGING = {
     }
 }
 
-LOGIN_URL = '/login'
-
 try:
     LOCAL_SETTINGS
 except NameError:

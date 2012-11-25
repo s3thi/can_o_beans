@@ -34,9 +34,13 @@
         <ul>
           <li><a href="/">home</a></li>
           <li><a href="/journal">journal</a></li>
+          <li><a href="{% url bookmarks_list %}">bookmarks</a></li>
           <li><a href="/about">about</a></li>
           <li><a href="/contact">contact</a></li>
           <li><a href="{% url feed_view %}">feed</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url logout %}">logout {{ user.username }}</a></li>
+          {% endif %}
         </ul>
       </div>
     </div>

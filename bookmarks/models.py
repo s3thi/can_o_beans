@@ -8,6 +8,7 @@ class Bookmark(models.Model):
 	modified = models.DateTimeField(auto_now=True)
 	title = models.TextField()
 	url = models.URLField()
+	hostname = models.TextField(blank=True)
 	tags = TaggableManager(blank=True)
 	note = models.TextField(blank=True)
 	private = models.BooleanField(default=False)
@@ -15,5 +16,6 @@ class Bookmark(models.Model):
 	def __unicode__(self):
 		return self.title
 
-	def hostname(self):
-		return urlparse(self.url).hostname 
+	def save(self, *args, **kwargs):
+		self.hostname = urlparse(self.url).hostname
+		super(Bookmark, self).save(*args, **kwargs)

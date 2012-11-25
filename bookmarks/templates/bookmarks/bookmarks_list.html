@@ -5,38 +5,13 @@
 
 {% block content %}
 	<div class="content-block">
-		<h2>Bookmarks</h2>
+		<h2>All Bookmarks</h2>
 		
-		<a href="{% url bookmark_create %}">Add New</a>
-
-		<form class="inline">
-			<input type="text" placeholder="Filter by tags">
-			<input type="submit">
-		</form>
+		{% if user.is_authenticated %}
+			<a class="label" href="{% url bookmark_create %}">add new</a>
+		{% endif %}
 		
-		{% for bookmark in object_list %}
-			<div class="bookmark">
-				<div class="bookmark-title">
-					<a target="blank" rel="nofollow" class="bookmark-url" href="{{ bookmark.url }}">{{ bookmark.title }}</a>
-					<span class="bookmark-hostname">
-						(<a href="{% url bookmarks_hostname hostname=bookmark.hostname %}">{{ bookmark.hostname }}</a>)
-					</span>
-				</div>
-
-				{% if bookmark.note %}
-					<div class="bookmark-note">
-						<p>{{ bookmark.note|safe }}</p>
-					</div>
-				{% endif %}
-				
-				<div class="bookmark-tags">
-					{% for tag in bookmark.tags.all %}
-						<a class="tag" href="{% url bookmarks_tagged tags=tag.name %}">{{ tag }}</a>
-					{% endfor %}
-				</div>
-				
-				<span class="bookmark-ago">added {{ bookmark.created|naturaltime }}</span> 
-			</div>
-		{% endfor %}
+		{% include "bookmarks/bookmarks_list_snippet.html" %}
+	
 	</div>
 {% endblock content %}

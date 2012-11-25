@@ -1,0 +1,10 @@
+{% extends "gravy/base.html" %}
+
+{% block title %}Logged Out{% endblock title %}
+
+{% block content %}
+	<div class="content-block">
+		<h2>Logged Out</h2>
+		<p>You've been logged out. <a href="{% url login %}">Click here</a> to log back in.</p>
+	</div>
+{% endblock content %}

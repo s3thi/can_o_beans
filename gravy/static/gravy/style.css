@@ -154,4 +154,32 @@ p + h6 {
 .bookmark-url {
   color: #555;
   font-weight: bold;
+  text-decoration: underline;
+}
+
+.label {
+  background-color: #B65A05;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.label:hover {
+  background-color: #D67D2A;
+}
+
+a.label {
+  text-decoration: none;
+}
+
+.label.disabled {
+  background-color: gray;
+}
+
+.label.disabled:hover {
+  background-color: gray;  
+}
+
+.pagination {
+  margin-top: 20px;
 }
