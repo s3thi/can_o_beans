@@ -126,12 +126,12 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.flatpages',
     'django.contrib.sitemaps',
+    'django.contrib.humanize',
     
     'south',
     'taggit',
     
     'gravy',
-    'books',
     'journal',
     'bookmarks'
 )

@@ -22,6 +22,7 @@ sitemaps = {
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^journal/', include('journal.urls')),
+    url(r'^bookmarks/', include('bookmarks.urls')),
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 )
 

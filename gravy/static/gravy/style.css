@@ -120,3 +120,38 @@ p + h6 {
   border-top: solid 1px #CCC;
   margin-top: 30px;
 }
+
+.inline {
+  display: inline;
+}
+
+.bookmark {
+  margin-top: 20px;
+}
+
+.bookmark-hostname a {
+  color: gray;
+  size: 0.85em;
+}
+
+.bookmark-ago {
+  color: gray;
+  font-size: 0.85em;
+}
+
+.bookmark-note p {
+  margin: 0px;
+}
+
+.bookmark-tags {
+  /*font-size: 0.85em;*/
+}
+
+.bookmark-hostname {
+  color: gray;
+}
+
+.bookmark-url {
+  color: #555;
+  font-weight: bold;
+}

@@ -1,0 +1,14 @@
+{% extends "gravy/base.html" %}
+
+{% block title %}New Bookmark{% endblock title %}
+
+{% block content %}
+	<div class="content-block">
+		<h2>Add Bookmark</h2>
+		<form action="." method="POST">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<p><input type="submit"></p>
+		</form>
+	</div>
+{% endblock content %}
