@@ -7,13 +7,10 @@ html {
 
 body {
   font-family: 'Open Sans', verdana, arial, sans-serif;
-  width: 740px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #333333;
+  background-color: #292929;
   background-image: url("/static/gravy/pat.png");
   font-size: 14px;
-  line-height: 25px;
+  line-height: 1.75em;
   color: #555;
 }
 
@@ -73,9 +70,26 @@ p + h6 {
   margin-top: 35px;
 }
 
+.page_wrap,
+.outside-block
+{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content-block {
+  background-color: white;
+  padding: 1.5em;
+  box-shadow: 0px 0px 1px 1px #2C2C2C;
+}
+
+.content-block + .content-block {
+  margin-top: 1em;
+}
+
 .outside-block {
-  padding-left: 45px;
   color: #E8CAA4;
+  padding: 1em;
 }
 
 .outside-block a {
@@ -107,18 +121,10 @@ p + h6 {
   margin-right: 14px;
 }
 
-.content-block {
-  background-color: white;
-  padding: 25px 45px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  box-shadow: 0px 0px 1px 1px #2C2C2C;
-}
-
 .content-block-footer {
-  font-size: 12px;
+  font-size: 0.85em;
   border-top: solid 1px #CCC;
-  margin-top: 30px;
+  margin-top: 2.15em;
 }
 
 .inline {
@@ -126,7 +132,7 @@ p + h6 {
 }
 
 .bookmark {
-  margin-top: 20px;
+  margin-top: 1.45em;
 }
 
 .bookmark-hostname a {
@@ -141,10 +147,6 @@ p + h6 {
 
 .bookmark-note p {
   margin: 0px;
-}
-
-.bookmark-tags {
-  /*font-size: 0.85em;*/
 }
 
 .bookmark-hostname {
@@ -181,25 +183,25 @@ a.label {
 }
 
 .pagination {
-  margin-top: 20px;
+  margin-top: 1.45em;
 }
 
 .cob-form {
-  margin-top: 20px;
+  margin-top: 1.45em;
 }
 
 .cob-form .control-group {
-  margin-top: 10px;
+  margin-top: 0.75em;
 }
 
 .cob-form input[type="text"] {
   font-size: 1.3em;
-  width: 20em;
+  width: 75%;
 }
 
 .cob-form textarea {
   font-size: 1.3em;
-  width: 20em;
+  width: 75%;
   height: 10em;
 }
 
@@ -209,5 +211,32 @@ a.label {
 }
 
 .cob-form .help-inline {
-  margin-left: 1em;
+  display: block;
+}
+
+/* Media queries. */
+
+@media screen and (min-width: 45em) {
+  .page_wrap {
+    width: 50%;
+  }
+
+  .outside-block {
+    width: 45%;
+  }
+
+  .content-block {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .content-block + .content-block {
+    margin-top: 2em;
+  }
+}
+
+@media screen and (min-width: 55em) {
+  .content-block {
+    padding: 1.75em 3.25em;
+  }
 }
