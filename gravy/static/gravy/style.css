@@ -26,12 +26,13 @@ a:hover {
 pre {
   color: #EEE;
   background-color: #322F27;
-  padding: 7px;
-  line-height: 20px;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  padding: 0.5em;
+  line-height: 1.45em;
+  margin-top: 1.75em;
+  margin-bottom: 1.75em;
   font-family: "Courier New", "Courier", monospace;
-  font-size: 14px;
+  font-size: 1em;
+  overflow-x: scroll;
 }
 
 code {
