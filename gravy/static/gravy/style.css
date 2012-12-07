@@ -90,7 +90,7 @@ p + h6 {
 
 .outside-block {
   color: #E8CAA4;
-  padding: 1em;
+  padding: 0.5em;
 }
 
 .outside-block a {
@@ -163,7 +163,7 @@ p + h6 {
 .label {
   background-color: #B65A05;
   color: white;
-  padding: 2px 4px;
+  padding: 0.15em 0.5em;
   border-radius: 3px;
 }
 
@@ -172,6 +172,7 @@ p + h6 {
 }
 
 a.label {
+  color: white;
   text-decoration: none;
 }
 
@@ -185,6 +186,11 @@ a.label {
 
 .pagination {
   margin-top: 1.45em;
+}
+
+.pagination .current {
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 .cob-form {
