@@ -15,20 +15,22 @@
 
 {% block extraoutside_before_footer %}
   {% if journal_entry_list %}
-    <div id="pagination" class="outside-block">
-      <div class="arrow-group">
+    <div class="outside-block pagination">
         {% if page_obj.has_previous %}
-          <a class="previous" href="{% url cob_journal_index_paginated page=page_obj.previous_page_number %}">&larr; Previous Page</a>
+            <a class="label" href="?page={{ page_obj.previous_page_number }}">← prev</a>
         {% else %}
-          <span class="previous">&larr; Previous Page</span>
+            <span class="label disabled">← prev</span>
         {% endif %}
 
+        <span class="current">
+            page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
         {% if page_obj.has_next %}
-          <a class="next" href="{% url cob_journal_index_paginated page=page_obj.next_page_number %}">Next Page &rarr;</a>
+            <a class="label" href="?page={{ page_obj.next_page_number }}">next →</a>
         {% else %}
-          <span class="next">Next Page &rarr;</span>
+            <span class="label disabled">next →</span>
         {% endif %}
-      </div>
     </div>
   {% endif %}
 {% endblock extraoutside_before_footer %}
