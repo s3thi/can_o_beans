@@ -7,12 +7,11 @@
 	<div class="content-block">
 		<h2>All Bookmarks</h2>
 		
-		{% if user.is_authenticated %}
+		{% if perms.bookmarks.add_bookmark %}
 			<a class="label" href="{% url bookmark_create %}">add new</a>
 		{% endif %}
 		
 		{% include "bookmarks/bookmarks_list_snippet.html" %}
-	
 	</div>
 {% endblock content %}
 

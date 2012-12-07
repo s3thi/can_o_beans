@@ -22,7 +22,16 @@
 				{% endfor %}
 			</div>
 			
-			<span class="bookmark-ago">added {{ bookmark.created|naturaltime }}</span> 
+			<div class="bookmark-meta">
+				<span class="bookmark-ago">added {{ bookmark.created|naturaltime }}</span>
+				{% if perms.bookmarks.change_bookmark %}
+					<a href="#">edit</a>
+				{% endif %}
+
+				{% if perms.bookmarks.delete_bookmark %}
+					<a href="#">delete</a>
+				{% endif %}
+			</div>
 		</div>
 	{% endfor %}
 {% else %}
