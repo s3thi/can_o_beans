@@ -10,3 +10,7 @@
 		{% include "bookmarks/bookmarks_list_snippet.html" %}
 	</div>
 {% endblock content %}
+
+{% block extraoutside_before_footer %}
+		{% include "bookmarks/bookmarks_pagination_snippet.html" %}
+{% endblock extraoutside_before_footer %}
