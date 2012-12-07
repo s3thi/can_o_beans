@@ -117,6 +117,14 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'south',
+    'taggit',
+    'crispy_forms',
+    
+    'gravy',
+    'journal',
+    'bookmarks',
+    
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -127,14 +135,6 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.sitemaps',
     'django.contrib.humanize',
-    
-    'south',
-    'taggit',
-    'crispy_forms',
-    
-    'gravy',
-    'journal',
-    'bookmarks'
 )
 
 # A sample logging configuration. The only tangible logging
