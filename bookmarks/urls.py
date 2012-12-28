@@ -10,4 +10,5 @@ urlpatterns = patterns('',
 		name='bookmarks_hostname'),
 	
 	url(r'^new/$', views.CreateBookmarkView.as_view(), name='bookmark_create'),
+	url(r'^edit/(?P<id>\d+)/$', views.EditBookmarkView.as_view(), name='bookmark_edit'),
 )

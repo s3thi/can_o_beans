@@ -1,7 +1,7 @@
 from functools import wraps
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.views import login
 from bookmarks.models import Bookmark
@@ -101,3 +101,7 @@ class CreateBookmarkView(StaffMemberRequiredMixin, CreateView):
 		initial['url'] = self.request.GET.get('url', '')
 		
 		return initial
+
+
+class EditBookmarkView(StaffMemberRequiredMixin, UpdateView):
+	pass
