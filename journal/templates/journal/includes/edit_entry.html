@@ -1,0 +1,15 @@
+{% load crispy_forms_tags %}
+{% block extrahead %}
+	<script type="text/javascript" src="{{STATIC_URL}}ckeditor/ckeditor.js"></script>
+{% endblock extrahead %}
+
+{% crispy form %}
+<script>
+	CKEDITOR.replace('id_content', {
+		'extraPlugins': 'autogrow',
+		'autoGrow_maxHeight': 800,
+		'autoGrow_onStartup': true,
+		'disableNativeSpellChecker': true,
+		'forcePasteAsPlainText': true
+	});
+</script>

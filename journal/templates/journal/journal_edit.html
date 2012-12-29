@@ -1,0 +1,9 @@
+{% extends "gravy/base.html" %}
+
+{% block title %}{{entry.title}} - Edit{% endblock title %}
+
+{% block content %}
+	<div class="content-block">
+		{% include "journal/includes/edit_entry.html" %}
+	</div>
+{% endblock content %}
