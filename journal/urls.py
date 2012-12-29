@@ -17,5 +17,10 @@ urlpatterns = patterns('',
     url('^{0}/{1}/{2}/{3}/$'.format(y, m, d, s), views.EntryView.as_view(),
         name='cob_journal_entry_detail_view'),
 
+    url(r'^new/', views.CreateJournalEntryView.as_view(),
+    	name='journal_entry_new'),
+    url(r'^edit/(?P<pk>\d+)/$', views.EditJournalEntryView.as_view(),
+    	name='journal_entry_edit'),
+
     url(r'^feed/$', views.LatestEntriesFeed(), name='feed_view'),
 )

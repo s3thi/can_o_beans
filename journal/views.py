@@ -3,6 +3,10 @@ from django.contrib.syndication.views import Feed
 from django.views.generic import DetailView, dates
 from django.utils.timezone import get_default_timezone
 from journal.models import JournalEntry
+from gravy.utils import StaffMemberRequiredMixin
+from django.views.generic.edit import CreateView, UpdateView
+from journal.forms import JournalEntryForm
+from django.core.urlresolvers import reverse
 
 
 class JournalIndexView(dates.ArchiveIndexView):
@@ -61,3 +65,19 @@ class LatestEntriesFeed(Feed):
 
     def item_description(self, item):
         return item.content_processed
+
+
+class CreateJournalEntryView(StaffMemberRequiredMixin, CreateView):
+    model = JournalEntry
+    template_name = 'journal/journal_new.html'
+    form_class = JournalEntryForm
+
+    def get_success_url(self):
+        return reverse('journal_entry_edit', kwargs={'pk': self.object.id})
+
+
+class EditJournalEntryView(StaffMemberRequiredMixin, UpdateView):
+        model = JournalEntry
+        template_name = 'journal/journal_edit.html'
+        form_class = JournalEntryForm
+        context_object_name = 'entry'
