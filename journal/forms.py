@@ -11,11 +11,11 @@ class JournalEntryForm(forms.ModelForm):
         }
         exclude = ('content_processed',)
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, action, *args, **kwargs):
         self.helper = FormHelper()
         self.helper.form_class = 'cob-form'
         self.helper.form_method = 'post'
-        self.helper.form_action = 'journal_entry_new'
+        self.helper.form_action = action
 
         self.helper.add_input(Submit('submit', 'Submit'))
         super(JournalEntryForm, self).__init__(*args, **kwargs)

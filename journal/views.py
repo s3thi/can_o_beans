@@ -75,9 +75,21 @@ class CreateJournalEntryView(StaffMemberRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('journal_entry_edit', kwargs={'pk': self.object.id})
 
+    def get_form(self, *args, **kwargs):
+        return self.form_class('journal_entry_new', **self.get_form_kwargs())
+
 
 class EditJournalEntryView(StaffMemberRequiredMixin, UpdateView):
         model = JournalEntry
         template_name = 'journal/journal_edit.html'
         form_class = JournalEntryForm
         context_object_name = 'entry'
+
+        def get_success_url(self):
+            return reverse('journal_entry_edit', kwargs={'pk': self.object.id})
+
+        def get_form(self, *args, **kwargs):
+            return self.form_class(
+                reverse('journal_entry_edit', kwargs={'pk': self.object.id}),
+                **self.get_form_kwargs()
+            )
